@@ -1,7 +1,7 @@
 {
   "include": ["**/*", "../utils.d.ts"],
   "compilerOptions": {
-    "types": ["@moddota/panorama-types/normalized"],
+    "types": ["@sunlight/panorama-types/normalized"],
     "lib": ["es2017"],
     "noEmit": true,
     "strict": true

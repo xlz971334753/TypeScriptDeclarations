@@ -1,7 +1,7 @@
 {
   "include": ["**/*", "../utils.d.ts"],
   "compilerOptions": {
-    "types": ["@moddota/dota-lua-types/normalized"],
+    "types": ["@sunlight/dota-lua-types/normalized"],
     "lib": ["esnext"],
     "noEmit": true,
     "strict": true
