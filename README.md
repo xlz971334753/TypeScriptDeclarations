@@ -17,6 +17,19 @@ examples.
 5. Commit to a new branch
 6. Make a merge request
 
-### Updating package versions (for maintainers)
-1. Run `npm run bump:lua-types <major|minor|patch>` to update the lua types package, or `npm run bump:panorama-types <major|minor|patch>` to update the panorama types.
-2. Push with tags
+### Publishing packages (for maintainers)
+
+1. Make sure you are logged in to npm with an account that can publish the `@sunlight` scope
+   (`npm whoami`).
+2. Run `npm run publish:types` (or `yarn publish:types`).
+   - If your account has 2FA enabled for publish, provide an OTP:
+     - `yarn publish:types --otp=123456`
+     - `npm run publish:types -- --otp=123456`
+     - or set `NPM_OTP=123456`
+   - If no OTP is passed and publish fails with `EOTP`, the script will prompt for one
+     interactively.
+3. The script builds both packages, compares each package against the npm `latest` tarball
+   (ignoring `version`), skips packages with no substantive changes, and for changed/new packages
+   bumps a patch version then runs `npm publish --access public`.
+4. If versions were bumped, commit the updated package `package.json` files if you want the version
+   changes tracked in git.

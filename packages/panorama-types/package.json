@@ -9,8 +9,14 @@
     "typescript"
   ],
   "homepage": "https://github.com/ModDota/TypeScriptDeclarations#readme",
-  "bugs": "https://github.com/ModDota/TypeScriptDeclarations/issues",
-  "repository": "https://github.com/ModDota/TypeScriptDeclarations/tree/master/packages/panorama-types",
+  "bugs": {
+    "url": "https://github.com/ModDota/TypeScriptDeclarations/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ModDota/TypeScriptDeclarations.git",
+    "directory": "packages/panorama-types"
+  },
   "license": "MIT",
   "author": "ark120202",
   "files": [
@@ -25,5 +31,8 @@
   },
   "peerDependencies": {
     "typescript": "^4.0.0 || ^5.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
