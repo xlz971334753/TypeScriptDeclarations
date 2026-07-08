@@ -19,7 +19,7 @@ examples.
 
 ### Publishing packages (for maintainers)
 
-1. Make sure you are logged in to npm with an account that can publish the `@sunlight` scope
+1. Make sure you are logged in to npm with an account that can publish the `@sunlight_xlz` scope
    (`npm whoami`).
 2. Run `npm run publish:types` (or `yarn publish:types`).
    - If your account has 2FA enabled for publish, provide an OTP:

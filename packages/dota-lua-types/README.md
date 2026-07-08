@@ -11,9 +11,9 @@ TypeScript definitions for Dota 2 Lua API, designed to be used with
 1. Get package from npm
 
 ```shell
-yarn add -D @sunlight/dota-lua-types
+yarn add -D @sunlight_xlz/dota-lua-types
 # or
-npm install -D @sunlight/dota-lua-types
+npm install -D @sunlight_xlz/dota-lua-types
 ```
 
 2. Modify your `tsconfig.json`
@@ -21,8 +21,8 @@ npm install -D @sunlight/dota-lua-types
 ```json
 {
   "compilerOptions": {
-    "types": ["@sunlight/dota-lua-types"],
-    "plugins": [{ "transform": "@sunlight/dota-lua-types/transformer" }]
+    "types": ["@sunlight_xlz/dota-lua-types"],
+    "plugins": [{ "transform": "@sunlight_xlz/dota-lua-types/transformer" }]
   }
 }
 ```
@@ -34,7 +34,7 @@ This package includes 2 versions of enum types - raw and normalized. Raw types a
 changes. This makes the code using some enums compatible with Panorama, however it leads to
 repetition and requires you to use inconsistent standard names.
 
-Normalized enum types can be included with `"types": ["@sunlight/dota-lua-types/normalized"]`. With these
+Normalized enum types can be included with `"types": ["@sunlight_xlz/dota-lua-types/normalized"]`. With these
 types, enums have consistent names and have no repeated parts. For example, instead of
 `EDOTA_ModifyGold_Reason.DOTA_ModifyGold_Unspecified` you have to write
 `ModifyGoldReason.UNSPECIFIED`.

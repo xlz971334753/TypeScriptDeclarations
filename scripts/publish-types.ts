@@ -21,11 +21,11 @@ const ROOT_DIRECTORY = path.resolve(__dirname, '..');
 const PACKAGE_TARGETS: PackageTarget[] = [
   {
     directory: path.join(ROOT_DIRECTORY, 'packages', 'dota-lua-types'),
-    name: '@sunlight/dota-lua-types',
+    name: '@sunlight_xlz/dota-lua-types',
   },
   {
     directory: path.join(ROOT_DIRECTORY, 'packages', 'panorama-types'),
-    name: '@sunlight/panorama-types',
+    name: '@sunlight_xlz/panorama-types',
   },
 ];
 
@@ -185,17 +185,28 @@ function bump_patch_version(package_directory: string): string {
 }
 
 function is_otp_error(message: string): boolean {
-  return message.includes('EOTP') || message.includes('one-time password');
+  const lower = message.toLowerCase();
+  return (
+    lower.includes('eotp') ||
+    lower.includes('one-time password') ||
+    lower.includes('two-factor authentication') ||
+    lower.includes('bypass 2fa')
+  );
+}
+
+function otp_help_message(): string {
+  return [
+    'npm publish requires 2FA OTP (or an Automation / Granular token with "Bypass 2FA").',
+    'Re-run with a fresh authenticator code:',
+    '  yarn publish:types --otp=<code>',
+    '  npm run publish:types -- --otp=<code>',
+    '  $env:NPM_OTP="<code>"; yarn publish:types',
+  ].join('\n');
 }
 
 function simplify_error_message(message: string): string {
   if (is_otp_error(message)) {
-    return [
-      'npm publish requires a one-time password (2FA).',
-      'Re-run with: yarn publish:types --otp=<code>',
-      'Or: npm run publish:types -- --otp=<code>',
-      'Or set NPM_OTP=<code>.',
-    ].join(' ');
+    return otp_help_message();
   }
 
   const lines = message
