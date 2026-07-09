@@ -22,6 +22,10 @@ examples.
 1. Make sure you are logged in to npm with an account that can publish the `@sunlight_xlz` scope
    (`npm whoami`).
 2. Run `npm run publish:types` (or `yarn publish:types`).
+   - Choose version bump type (defaults to patch):
+     - `yarn publish:types --bump=minor`
+     - `npm run publish:types -- --bump=major`
+     - If no `--bump` is passed and the script is running in a TTY, it will prompt interactively.
    - If your account has 2FA enabled for publish, provide an OTP:
      - `yarn publish:types --otp=123456`
      - `npm run publish:types -- --otp=123456`
@@ -30,14 +34,15 @@ examples.
      interactively.
 3. The script builds both packages, compares each package against the npm `latest` tarball
    (ignoring `version`), skips packages with no substantive changes, and for changed/new packages
-   bumps a patch version then runs `npm publish --access public`.
+   bumps a version (major/minor/patch) then runs `npm publish --access public`.
 4. If versions were bumped, commit the updated package `package.json` files if you want the version
    changes tracked in git.
 
 ### Generating changelog, overrides, and manual comments
 
 - **Changelog output**: every `npm run build:types` updates snapshots under `artifacts/type-snapshots/` and
-  writes `artifacts/changelog/types-changelog.md` by diffing `prev/` vs `current/`.
+  appends a new entry to `artifacts/changelog/types-changelog.md` (only when changes are detected) by
+  diffing `prev/` vs `current/`.
 - **Overrides**: put signature fixes into `config/api_overrides.json` (keyed by identifier, e.g.
   `ListenToGameEvent` or `CDOTA_BaseNPC.IsFort`). These overrides take precedence over the built-in ones.
 - **Manual comments**: put human-written comment overrides into `config/manual_comments.json` (keyed by

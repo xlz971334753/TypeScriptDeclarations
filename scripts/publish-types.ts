@@ -16,6 +16,8 @@ type PublishResult = {
   reason?: string;
 };
 
+type BumpType = 'major' | 'minor' | 'patch';
+
 const ROOT_DIRECTORY = path.resolve(__dirname, '..');
 
 const PACKAGE_TARGETS: PackageTarget[] = [
@@ -42,6 +44,24 @@ function parse_otp_argument(): string | undefined {
   }
 
   return process.env.NPM_OTP;
+}
+
+function parse_bump_argument(): BumpType | undefined {
+  const args = process.argv.slice(2);
+  for (let index = 0; index < args.length; index += 1) {
+    const arg = args[index];
+    if (arg.startsWith('--bump=')) {
+      return arg.slice('--bump='.length) as BumpType;
+    }
+    if (arg === '--bump') {
+      return args[index + 1] as BumpType;
+    }
+  }
+  return undefined;
+}
+
+function is_bump_type(value: string | undefined): value is BumpType {
+  return value === 'major' || value === 'minor' || value === 'patch';
 }
 
 function run(command: string, cwd = ROOT_DIRECTORY): string {
@@ -176,8 +196,8 @@ async function download_latest_tarball(
   return 'found';
 }
 
-function bump_patch_version(package_directory: string): string {
-  run('npm version patch --git-tag-version false', package_directory);
+function bump_version(package_directory: string, bump_type: BumpType): string {
+  run(`npm version ${bump_type} --git-tag-version false`, package_directory);
   const package_json = JSON.parse(
     fs.readFileSync(path.join(package_directory, 'package.json'), 'utf8'),
   ) as { version: string };
@@ -230,6 +250,30 @@ function ask_otp(): Promise<string> {
   });
 }
 
+function ask_bump_type(default_bump_type: BumpType): Promise<BumpType> {
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+  });
+
+  return new Promise((resolve) => {
+    rl.question('Select bump (major/minor/patch) [patch]: ', (answer) => {
+      rl.close();
+      const normalized = answer.trim();
+      if (!normalized) {
+        resolve(default_bump_type);
+        return;
+      }
+      if (is_bump_type(normalized)) {
+        resolve(normalized);
+        return;
+      }
+      console.log(`Invalid bump '${normalized}', defaulting to ${default_bump_type}.`);
+      resolve(default_bump_type);
+    });
+  });
+}
+
 async function publish_package(package_directory: string, otp?: string): Promise<void> {
   const otp_flag = otp ? ` --otp=${otp}` : '';
   try {
@@ -251,6 +295,7 @@ async function publish_package(package_directory: string, otp?: string): Promise
 async function process_package(
   target: PackageTarget,
   temp_root: string,
+  bump_type: BumpType,
   otp?: string,
 ): Promise<PublishResult> {
   console.log(`\n=== ${target.name} ===`);
@@ -280,7 +325,7 @@ async function process_package(
     console.log(`${target.name} is not on npm yet. Will publish initial version.`);
   }
 
-  const next_version = bump_patch_version(target.directory);
+  const next_version = bump_version(target.directory, bump_type);
   console.log(`Bumped ${target.name} to ${next_version}`);
   await publish_package(target.directory, otp);
   console.log(`Published ${target.name}@${next_version}`);
@@ -290,6 +335,14 @@ async function process_package(
 
 async function main(): Promise<void> {
   const otp = parse_otp_argument();
+  const default_bump_type: BumpType = 'patch';
+  const bump_arg = parse_bump_argument();
+  const bump_type = is_bump_type(bump_arg)
+    ? bump_arg
+    : process.stdin.isTTY
+      ? await ask_bump_type(default_bump_type)
+      : default_bump_type;
+
   ensure_npm_login();
 
   console.log('\nBuilding packages...');
@@ -302,7 +355,7 @@ async function main(): Promise<void> {
   try {
     for (const target of PACKAGE_TARGETS) {
       try {
-        results.push(await process_package(target, temp_root, otp));
+        results.push(await process_package(target, temp_root, bump_type, otp));
       } catch (error) {
         const reason = error instanceof Error ? error.message : String(error);
         console.error(`Failed to publish ${target.name}: ${reason}`);
