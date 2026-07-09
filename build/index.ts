@@ -17,6 +17,32 @@ const snapshot_current = path.join(snapshot_root, 'current');
 const changelog_root = path.resolve(__dirname, '../artifacts/changelog');
 const changelog_md_path = path.join(changelog_root, 'types-changelog.md');
 
+function format_local_timestamp(date: Date): string {
+  const pad2 = (n: number) => String(n).padStart(2, '0');
+  const yyyy = date.getFullYear();
+  const mm = pad2(date.getMonth() + 1);
+  const dd = pad2(date.getDate());
+  const hh = pad2(date.getHours());
+  const mi = pad2(date.getMinutes());
+  const ss = pad2(date.getSeconds());
+  return `${yyyy}-${mm}-${dd} ${hh}:${mi}:${ss}`;
+}
+
+function strip_changelog_title(md: string): string {
+  const lines = md.split(/\r?\n/);
+  if (lines.length > 0 && lines[0].trim() === '# Types changelog') {
+    lines.shift();
+    if (lines.length > 0 && lines[0].trim() === '') lines.shift();
+  }
+  return lines.join('\n').replace(/^\s+/, '');
+}
+
+async function ensure_changelog_header(): Promise<void> {
+  const changelog_exists = await fs.pathExists(changelog_md_path);
+  if (changelog_exists) return;
+  await fs.outputFile(changelog_md_path, '# Types changelog\n');
+}
+
 async function update_snapshots_and_changelog() {
   await fs.ensureDir(snapshot_root);
   await fs.ensureDir(changelog_root);
@@ -44,13 +70,18 @@ async function update_snapshots_and_changelog() {
 
   if (await fs.pathExists(snapshot_prev)) {
     const diff = diff_types(snapshot_prev, snapshot_current);
-    const md = render_diff_markdown(diff);
-    await fs.outputFile(changelog_md_path, md);
+    if (diff.summary.added === 0 && diff.summary.removed === 0 && diff.summary.changed === 0) {
+      return;
+    }
+
+    await ensure_changelog_header();
+
+    const timestamp = format_local_timestamp(new Date());
+    const md = strip_changelog_title(render_diff_markdown(diff));
+    const entry = `\n\n## ${timestamp}\n\n${md}`.replace(/\s+$/, '');
+    await fs.appendFile(changelog_md_path, entry);
   } else {
-    await fs.outputFile(
-      changelog_md_path,
-      '# Types changelog\n\nNo previous snapshot found. Run generation again to produce a diff.\n',
-    );
+    await ensure_changelog_header();
   }
 }
 
