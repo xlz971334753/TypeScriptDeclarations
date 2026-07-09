@@ -44,3 +44,5 @@ examples.
   identifier, e.g. `CDOTA_Modifier_Lua.GetModifierPropertyRestorationAmplification`). When present, the
   override replaces the upstream English comment for that field (`description`, `deprecated`, or
   `params.<paramName>`). Otherwise the generator keeps the original upstream comment unchanged.
+- **API supplements**: put declarations missing from the upstream dump into `config/api_supplements.json`.
+  Members are merged into the matching interface on every build (skipped if the dump already provides them).

@@ -1,0 +1,17 @@
+{
+  "CDOTA_Modifier_Lua": [
+    {
+      "name": "HandleCustomTransmitterData",
+      "description": "前后端通讯，接受自定义数据 对应方法`AddCustomTransmitterData`",
+      "availability": "client",
+      "parameters": [{ "name": "data", "type": "NetworkedData<AnyTable>" }],
+      "return": "void"
+    },
+    {
+      "name": "AddCustomTransmitterData",
+      "description": "前后端通讯，传输自定义数据 对应方法`HandleCustomTransmitterData`",
+      "availability": "server",
+      "return": "AnyTable"
+    }
+  ]
+}

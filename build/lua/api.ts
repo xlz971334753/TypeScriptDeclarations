@@ -1,6 +1,7 @@
 import api from '@moddota/dota-data/files/vscripts/api';
 import * as dom from 'dts-dom';
 import { emit, getFunction, getType, withDescription } from './utils';
+import { create_supplement_member, get_api_supplements } from './supplements';
 
 const precedingDeclarations: Record<string, string> = {
   ListenToGameEvent: `
@@ -87,6 +88,19 @@ export const generatedApi = emit(
     mainDeclarationMembers.push(
       dom.create.property('__kind__', dom.type.stringLiteral('instance')),
     );
+
+    const supplements = get_api_supplements()[typeName];
+    if (supplements) {
+      const existing_names = new Set(
+        mainDeclarationMembers
+          .map((member) => ('name' in member ? member.name : undefined))
+          .filter((name): name is string => name !== undefined),
+      );
+      for (const spec of supplements) {
+        if (existing_names.has(spec.name)) continue;
+        mainDeclarationMembers.push(create_supplement_member(spec));
+      }
+    }
 
     const constructorTypes = dom.create.intersection([]);
     if (typeName !== declaration.instance) {

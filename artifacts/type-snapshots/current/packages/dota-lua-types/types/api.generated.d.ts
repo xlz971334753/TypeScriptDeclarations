@@ -6085,6 +6085,16 @@ declare interface CDOTA_Modifier_Lua extends CDOTA_Buff {
      */
     ReincarnateTime?(): number;
     __kind__: 'instance';
+    /**
+     * 前后端通讯，接受自定义数据 对应方法`AddCustomTransmitterData`
+     * @client
+     */
+    HandleCustomTransmitterData(data: NetworkedData<AnyTable>): void;
+    /**
+     * 前后端通讯，传输自定义数据 对应方法`HandleCustomTransmitterData`
+     * @server
+     */
+    AddCustomTransmitterData(): AnyTable;
 }
 
 /** @both */
