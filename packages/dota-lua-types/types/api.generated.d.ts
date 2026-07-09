@@ -5367,10 +5367,12 @@ declare interface CDOTA_Modifier_Lua extends CDOTA_Buff {
      */
     GetModifierPropertyRedirectHealthGain?(): void;
     /**
+     * 生命回复调整（百分比）。效果等同于冰眼。
+     *
      * @abstract
      * @both
      */
-    GetModifierPropertyRestorationAmplification?(): void;
+    GetModifierPropertyRestorationAmplification?(): number;
     /**
      * @abstract
      * @both
