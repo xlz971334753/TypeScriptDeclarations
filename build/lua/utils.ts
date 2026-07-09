@@ -3,11 +3,32 @@ import * as dom from 'dts-dom';
 import _ from 'lodash';
 import path from 'path';
 import prettier from 'prettier';
-import { wrapDescription } from '../common/utils';
+import fs from 'fs';
+import { translate_description, wrapDescription } from '../common/utils';
 import { applyApiOverride, overrides } from './overrides';
 
 const wrapJsDoc = (start: string, description: string) =>
   `${start} ${wrapDescription(description, start.length + 1).trimStart()}`;
+
+type OverrideSpec = {
+  callback?: 'required' | 'optional';
+  generics?: { name: string; extend?: string }[];
+  args?: Record<string, unknown>;
+  return?: string;
+  description?: string;
+};
+
+let config_overrides: Record<string, OverrideSpec> | undefined;
+function get_config_overrides(): Record<string, OverrideSpec> {
+  if (config_overrides) return config_overrides;
+  const config_path = path.resolve(__dirname, '../../config/api_overrides.json');
+  if (!fs.existsSync(config_path)) {
+    config_overrides = {};
+    return config_overrides;
+  }
+  config_overrides = JSON.parse(fs.readFileSync(config_path, 'utf8')) as Record<string, OverrideSpec>;
+  return config_overrides;
+}
 
 export function withDescription<T extends dom.DeclarationBase>(declaration: T, desc?: string) {
   if (desc != null) declaration.jsDocComment = wrapDescription(desc);
@@ -159,17 +180,28 @@ export function getFunction<T extends CallableDeclaration>(
 
   func.args
     .filter((x) => x.description != null)
-    .forEach((x) => comments.push(wrapJsDoc(`@param ${x.name}`, x.description!)));
+    .forEach((x) =>
+      comments.push(
+        wrapJsDoc(
+          `@param ${x.name}`,
+          translate_description(identifier, `param:${x.name}`, x.description!),
+        ),
+      ),
+    );
 
   if (isAbstract) comments.push('@abstract');
-  if ('deprecated' in func) comments.push(wrapJsDoc('@deprecated', func.deprecated!));
+  if ('deprecated' in func) {
+    comments.push(
+      wrapJsDoc('@deprecated', translate_description(identifier, 'deprecated', func.deprecated!)),
+    );
+  }
   if ('available' in func && func.available !== defaultAvailability) {
     comments.push(`@${func.available}`);
   }
 
   if ('description' in func && func.description) {
     if (comments.length > 0) comments.unshift('');
-    comments.unshift(wrapDescription(func.description));
+    comments.unshift(translate_description(identifier, 'description', func.description));
   }
 
   const returnType = getReturnType(identifier, func.returns);
@@ -177,8 +209,11 @@ export function getFunction<T extends CallableDeclaration>(
   fn.jsDocComment = comments.join('\n');
 
   const override = overrides[identifier];
+  const file_override = get_config_overrides()[identifier] as any;
+  const merged_override = file_override ?? override;
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-  const declarations: T[] = override !== undefined ? applyApiOverride(fn, override) : [fn];
+  const declarations: T[] =
+    merged_override !== undefined ? applyApiOverride(fn, merged_override) : [fn];
 
   if (compatibilityOverloads.has(identifier)) {
     const compatibilityFn = createType([], dom.create.namedTypeReference('never'));

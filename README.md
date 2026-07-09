@@ -33,3 +33,18 @@ examples.
    bumps a patch version then runs `npm publish --access public`.
 4. If versions were bumped, commit the updated package `package.json` files if you want the version
    changes tracked in git.
+
+### Generating changelog, overrides, and Chinese docs
+
+- **Changelog output**: every `npm run build:types` updates snapshots under `artifacts/type-snapshots/` and
+  writes `artifacts/changelog/types-changelog.md` by diffing `prev/` vs `current/`.
+- **Missing translations**: generation will write
+  `artifacts/changelog/missing_translations.json` when it encounters new/changed English comments that do
+  not exist in the translation cache.
+- **Overrides**: put signature fixes into `config/api_overrides.json` (keyed by identifier, e.g.
+  `ListenToGameEvent` or `CDOTA_BaseNPC.IsFort`). These overrides take precedence over the built-in ones.
+- **Manual comments (Chinese)**: put human-written comments into `config/manual_comments.json`.
+- **Translation cache**: put translated comments into `config/translation_cache.json` as:
+  `key -> translated_text`, where key format is `${identifier}:${field}:${sha256(original)}` and field is
+  `description | deprecated | param:<paramName>`.
+- **Translation how-to**: see `docs/TRANSLATION_WORKFLOW.md`.

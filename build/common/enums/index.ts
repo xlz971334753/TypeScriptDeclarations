@@ -1,6 +1,6 @@
 import vscriptsEnums from '@moddota/dota-data/files/vscripts/enums';
 import _ from 'lodash';
-import { emit, withDescription } from '../utils';
+import { emit, withDescription, translate_description } from '../utils';
 import { isGlobalEnumMember, normalizeEnumMemberName, normalizeEnumName } from './normalize';
 
 export * from './normalize';
@@ -22,7 +22,9 @@ export function generateEnumDeclarations(
       declarations.push(
         withDescription(
           `declare const ${declaration.name}: ${declaration.value}`,
-          declaration.description,
+          declaration.description
+            ? translate_description(`const:${declaration.name}`, 'description', declaration.description)
+            : undefined,
         ),
       );
       continue;
@@ -35,7 +37,12 @@ export function generateEnumDeclarations(
     if (normalize) {
       for (const global of normalizedGlobals) {
         declarations.push(
-          withDescription(`declare const ${global.name}: ${global.value}`, global.description),
+          withDescription(
+            `declare const ${global.name}: ${global.value}`,
+            global.description
+              ? translate_description(`enum:${declaration.name}#member:${global.name}`, 'description', global.description)
+              : undefined,
+          ),
         );
       }
     }
@@ -48,7 +55,12 @@ export function generateEnumDeclarations(
         .map((member) => {
           const name = normalize ? normalizeEnumMemberName(member.name, declaration) : member.name;
           const key = /^\d/.test(name) ? JSON.stringify(name) : name;
-          return withDescription(`${key} = ${member.value}`, member.description);
+          return withDescription(
+            `${key} = ${member.value}`,
+            member.description
+              ? translate_description(`enum:${declaration.name}#member:${member.name}`, 'description', member.description)
+              : undefined,
+          );
         })
         .join(',\n');
 
@@ -58,7 +70,9 @@ export function generateEnumDeclarations(
         !compileMembersOnly && declaration.description === undefined
           ? undefined
           : `${compileMembersOnly ? '@compileMembersOnly' : ''}${
-              declaration.description !== undefined ? `\n${declaration.description}` : ''
+              declaration.description !== undefined
+                ? `\n${translate_description(`enum:${declaration.name}`, 'description', declaration.description)}`
+                : ''
             }`,
       );
 
