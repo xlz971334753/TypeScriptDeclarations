@@ -2,7 +2,6 @@ import path from 'path';
 import prettier from 'prettier';
 import wordwrap from 'wordwrap';
 import fs from 'fs';
-import { createHash } from 'crypto';
 
 export const wrapDescription = (description: string, start = 0) =>
   wordwrap({ stop: 80, start })(description.replace(/\n/g, '\n\n'));
@@ -15,15 +14,8 @@ type ManualComments = Record<
     params?: Record<string, string>;
   }
 >;
-type TranslationCache = Record<string, string>;
 
 let manual_comments_cache: ManualComments | undefined;
-let translation_cache: TranslationCache | undefined;
-let missing_translations: Record<string, { identifier: string; field: string; original: string }> | undefined;
-
-function sha256(text: string): string {
-  return createHash('sha256').update(text).digest('hex');
-}
 
 function load_json_optional<T>(file_path: string, fallback: T): T {
   if (!fs.existsSync(file_path)) return fallback;
@@ -39,30 +31,11 @@ function get_manual_comments(): ManualComments {
   return manual_comments_cache;
 }
 
-function get_translation_cache(): TranslationCache {
-  if (translation_cache) return translation_cache;
-  translation_cache = load_json_optional(
-    path.resolve(__dirname, '../../config/translation_cache.json'),
-    {},
-  );
-  return translation_cache;
-}
-
-function get_missing_translations() {
-  if (missing_translations) return missing_translations;
-  missing_translations = {};
-  return missing_translations;
-}
-
-export function get_manual_description(identifier: string): string | undefined {
-  return get_manual_comments()[identifier]?.description;
-}
-
-export function translate_description(
+export function resolve_comment(
   identifier: string,
   field: string,
-  original: string,
-): string {
+  original?: string,
+): string | undefined {
   const manual = get_manual_comments()[identifier];
   if (manual) {
     if (field === 'description' && manual.description) return manual.description;
@@ -74,12 +47,6 @@ export function translate_description(
     }
   }
 
-  const key = `${identifier}:${field}:${sha256(original)}`;
-  const cache = get_translation_cache();
-  const translated = cache[key];
-  if (translated) return translated;
-
-  get_missing_translations()[key] = { identifier, field, original };
   return original;
 }
 
@@ -91,14 +58,6 @@ const optionalDescription = (description?: string) =>
 
 export const withDescription = (declaration: string, description?: string) =>
   optionalDescription(description) + declaration;
-
-export function flush_missing_translations() {
-  const out_path = path.resolve(__dirname, '../../artifacts/changelog/missing_translations.json');
-  const missing = get_missing_translations();
-  if (Object.keys(missing).length === 0) return;
-  fs.mkdirSync(path.dirname(out_path), { recursive: true });
-  fs.writeFileSync(out_path, JSON.stringify(missing, null, 2) + '\n', 'utf8');
-}
 
 const prettierConfig: prettier.Options = {
   parser: 'typescript',

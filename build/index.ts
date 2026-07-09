@@ -3,7 +3,6 @@ import path from 'path';
 import { generatedLua, generatedLuaEnumMappings } from './lua';
 import { generatedPanorama, generatedPanoramaEnumMappings } from './panorama';
 import { diff_types, render_diff_markdown } from '../scripts/diff-types';
-import { flush_missing_translations } from './common/utils';
 
 const write = (packageName: string, type: string, content: string) =>
   fs.outputFile(
@@ -71,7 +70,6 @@ Promise.all([
   ),
 ])
   .then(update_snapshots_and_changelog)
-  .then(() => flush_missing_translations())
   .catch((error) => {
     console.error(error);
     process.exit(1);

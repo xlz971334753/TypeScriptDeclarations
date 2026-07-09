@@ -1,6 +1,6 @@
 import events from '@moddota/dota-data/files/events';
 import _ from 'lodash';
-import { emit, withDescription, translate_description } from './utils';
+import { emit, withDescription, resolve_comment } from './utils';
 
 const eventTypeMap: Record<string, string> = {
   bool: '0 | 1',
@@ -26,7 +26,7 @@ const gameEventDeclarations = (() => {
         event.fields.length === 0 ? 'object' : `${_.upperFirst(_.camelCase(event.name))}Event`;
       return withDescription(
         `${event.name}: ${eventType};`,
-        event.description ? translate_description(`event:${event.name}`, 'description', event.description) : undefined,
+        resolve_comment(`event:${event.name}`, 'description', event.description),
       );
     })
     .join('\n');
@@ -44,9 +44,7 @@ const eventTypes = events
       .map((f) =>
         withDescription(
           `${f.name}: ${getEventType(f.type)}`,
-          f.description
-            ? translate_description(`event:${event.name}#field:${f.name}`, 'description', f.description)
-            : undefined,
+          resolve_comment(`event:${event.name}#field:${f.name}`, 'description', f.description),
         ),
       )
       .join('\n');
@@ -54,7 +52,7 @@ const eventTypes = events
     const interfaceName = `${_.upperFirst(_.camelCase(event.name))}Event`;
     return withDescription(
       `interface ${interfaceName} {${members}}`,
-      event.description ? translate_description(`event:${event.name}`, 'description', event.description) : undefined,
+      resolve_comment(`event:${event.name}`, 'description', event.description),
     );
   })
   .join('\n\n');

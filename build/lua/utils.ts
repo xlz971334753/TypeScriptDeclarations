@@ -4,7 +4,7 @@ import _ from 'lodash';
 import path from 'path';
 import prettier from 'prettier';
 import fs from 'fs';
-import { get_manual_description, translate_description, wrapDescription } from '../common/utils';
+import { resolve_comment, wrapDescription } from '../common/utils';
 import { applyApiOverride, overrides } from './overrides';
 
 const wrapJsDoc = (start: string, description: string) =>
@@ -184,7 +184,7 @@ export function getFunction<T extends CallableDeclaration>(
       comments.push(
         wrapJsDoc(
           `@param ${x.name}`,
-          translate_description(identifier, `param:${x.name}`, x.description!),
+          resolve_comment(identifier, `param:${x.name}`, x.description!)!,
         ),
       ),
     );
@@ -192,17 +192,18 @@ export function getFunction<T extends CallableDeclaration>(
   if (isAbstract) comments.push('@abstract');
   if ('deprecated' in func) {
     comments.push(
-      wrapJsDoc('@deprecated', translate_description(identifier, 'deprecated', func.deprecated!)),
+      wrapJsDoc('@deprecated', resolve_comment(identifier, 'deprecated', func.deprecated!)!),
     );
   }
   if ('available' in func && func.available !== defaultAvailability) {
     comments.push(`@${func.available}`);
   }
 
-  const description_text =
-    'description' in func && func.description
-      ? translate_description(identifier, 'description', func.description)
-      : get_manual_description(identifier);
+  const description_text = resolve_comment(
+    identifier,
+    'description',
+    'description' in func ? func.description : undefined,
+  );
 
   if (description_text) {
     if (comments.length > 0) comments.unshift('');

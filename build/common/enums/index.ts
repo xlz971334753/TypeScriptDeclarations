@@ -1,6 +1,6 @@
 import vscriptsEnums from '@moddota/dota-data/files/vscripts/enums';
 import _ from 'lodash';
-import { emit, withDescription, translate_description } from '../utils';
+import { emit, withDescription, resolve_comment } from '../utils';
 import { isGlobalEnumMember, normalizeEnumMemberName, normalizeEnumName } from './normalize';
 
 export * from './normalize';
@@ -22,9 +22,7 @@ export function generateEnumDeclarations(
       declarations.push(
         withDescription(
           `declare const ${declaration.name}: ${declaration.value}`,
-          declaration.description
-            ? translate_description(`const:${declaration.name}`, 'description', declaration.description)
-            : undefined,
+          resolve_comment(`const:${declaration.name}`, 'description', declaration.description),
         ),
       );
       continue;
@@ -39,9 +37,7 @@ export function generateEnumDeclarations(
         declarations.push(
           withDescription(
             `declare const ${global.name}: ${global.value}`,
-            global.description
-              ? translate_description(`enum:${declaration.name}#member:${global.name}`, 'description', global.description)
-              : undefined,
+            resolve_comment(`enum:${declaration.name}#member:${global.name}`, 'description', global.description),
           ),
         );
       }
@@ -57,9 +53,7 @@ export function generateEnumDeclarations(
           const key = /^\d/.test(name) ? JSON.stringify(name) : name;
           return withDescription(
             `${key} = ${member.value}`,
-            member.description
-              ? translate_description(`enum:${declaration.name}#member:${member.name}`, 'description', member.description)
-              : undefined,
+            resolve_comment(`enum:${declaration.name}#member:${member.name}`, 'description', member.description),
           );
         })
         .join(',\n');
@@ -71,7 +65,7 @@ export function generateEnumDeclarations(
           ? undefined
           : `${compileMembersOnly ? '@compileMembersOnly' : ''}${
               declaration.description !== undefined
-                ? `\n${translate_description(`enum:${declaration.name}`, 'description', declaration.description)}`
+                ? `\n${resolve_comment(`enum:${declaration.name}`, 'description', declaration.description)}`
                 : ''
             }`,
       );

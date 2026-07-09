@@ -1,4 +1,3 @@
-import { createHash } from 'crypto';
 import * as fs from 'fs';
 import * as path from 'path';
 import ts from 'typescript';
@@ -19,10 +18,6 @@ type ApiItem = {
   key: string;
   signature: string;
 };
-
-function sha256(text: string): string {
-  return createHash('sha256').update(text).digest('hex');
-}
 
 function list_dts_files(root_dir: string): string[] {
   const files: string[] = [];
@@ -232,10 +227,6 @@ export function render_diff_markdown(diff: TypeDiffOutput): string {
   }
 
   return lines.join('\n');
-}
-
-export function translation_key(identifier: string, field: string, original: string): string {
-  return `${identifier}:${field}:${sha256(original)}`;
 }
 
 if (require.main === module) {
