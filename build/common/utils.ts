@@ -54,6 +54,10 @@ function get_missing_translations() {
   return missing_translations;
 }
 
+export function get_manual_description(identifier: string): string | undefined {
+  return get_manual_comments()[identifier]?.description;
+}
+
 export function translate_description(
   identifier: string,
   field: string,

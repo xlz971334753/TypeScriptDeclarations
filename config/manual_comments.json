@@ -1,2 +1,5 @@
-{}
-
+{
+  "CDOTA_Modifier_Lua.GetModifierPropertyRestorationAmplification": {
+    "description": "生命回复调整（百分比）。效果等同于冰眼。"
+  }
+}

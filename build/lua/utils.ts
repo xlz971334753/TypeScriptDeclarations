@@ -4,7 +4,7 @@ import _ from 'lodash';
 import path from 'path';
 import prettier from 'prettier';
 import fs from 'fs';
-import { translate_description, wrapDescription } from '../common/utils';
+import { get_manual_description, translate_description, wrapDescription } from '../common/utils';
 import { applyApiOverride, overrides } from './overrides';
 
 const wrapJsDoc = (start: string, description: string) =>
@@ -199,9 +199,14 @@ export function getFunction<T extends CallableDeclaration>(
     comments.push(`@${func.available}`);
   }
 
-  if ('description' in func && func.description) {
+  const description_text =
+    'description' in func && func.description
+      ? translate_description(identifier, 'description', func.description)
+      : get_manual_description(identifier);
+
+  if (description_text) {
     if (comments.length > 0) comments.unshift('');
-    comments.unshift(translate_description(identifier, 'description', func.description));
+    comments.unshift(description_text);
   }
 
   const returnType = getReturnType(identifier, func.returns);

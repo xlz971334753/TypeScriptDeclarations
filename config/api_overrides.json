@@ -1,2 +1,5 @@
-{}
-
+{
+  "CDOTA_Modifier_Lua.GetModifierPropertyRestorationAmplification": {
+    "return": "number"
+  }
+}
