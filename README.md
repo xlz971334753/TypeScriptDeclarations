@@ -51,3 +51,5 @@ examples.
   `params.<paramName>`). Otherwise the generator keeps the original upstream comment unchanged.
 - **API supplements**: put declarations missing from the upstream dump into `config/api_supplements.json`.
   Members are merged into the matching interface on every build (skipped if the dump already provides them).
+  Supplement signatures may reference consumer-side types (e.g. `AnyTable` from typescript-to-lua);
+  do **not** add those aliases into this repo's `common.d.ts` / snapshots.

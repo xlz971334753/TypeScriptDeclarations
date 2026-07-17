@@ -19,8 +19,6 @@ type NetworkedData<T> = T extends string | number
     ? { [K in keyof T]: NetworkedData<T[K]> }
     : never;
 
-type AnyTable = Record<string, any>;
-
 type DotaConstructor<T extends object> = {
     [P in keyof T]: P extends '__kind__'
         ? 'constructor'
