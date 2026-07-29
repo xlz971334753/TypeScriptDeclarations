@@ -1124,458 +1124,438 @@ type ModifierFunction = modifierfunction;
 
 declare enum modifierfunction {
     /**
-     * Method Name: `GetModifierPreAttack_BonusDamage`
+     * 定值额外攻击力/目标额外攻击力（例：支配死灵/盛宴）
      */ MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE = 0,
     /**
-     * Method Name: `GetModifierPreAttack_BonusDamage_Target`
+     * 目标触发额外攻击力（例：摔跤行家）
      */
     MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE_TARGET = 1,
     /**
-     * Method Name: `GetModifierPreAttack_BonusDamage_Proc`
+     * Lua不可用：触发额外攻击力（例：射手天赋）
      */
     MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE_PROC = 2,
     /**
-     * Method Name: `GetModifierPreAttack_BonusDamagePostCrit`
+     * 后致命一击伤害（例：影刃）
      */
     MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE_POST_CRIT = 3,
     /**
-     * Method Name: `GetModifierBaseAttack_BonusDamage`
+     * 定值基础攻击力（例：长大）
      */
     MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE = 4,
     /**
-     * Method Name: `GetModifierProcAttack_BonusDamage_Physical`
+     * 物理攻击特效（例：怒意狂击）
      */
     MODIFIER_PROPERTY_PROCATTACK_BONUS_DAMAGE_PHYSICAL = 5,
     /**
-     * Method Name: `GetModifierProcAttack_ConvertPhysicalToMagical`
+     * Lua不可用：物理魔法转化攻击特效（例：超自然）
      */
     MODIFIER_PROPERTY_PROCATTACK_CONVERT_PHYSICAL_TO_MAGICAL = 6,
     /**
-     * Method Name: `GetModifierProcAttack_BonusDamage_Magical`
+     * 魔法攻击特效（例：金箍棒）
      */
     MODIFIER_PROPERTY_PROCATTACK_BONUS_DAMAGE_MAGICAL = 7,
     /**
-     * Method Name: `GetModifierProcAttack_BonusDamage_Pure`
+     * 纯粹攻击特效（例：魔晶血怒）
      */
     MODIFIER_PROPERTY_PROCATTACK_BONUS_DAMAGE_PURE = 8,
     /**
-     * Method Name: `GetModifierProcAttack_BonusDamage_Magical_Target`
+     * Lua不可用：目标魔法攻击特效（例：丝质重器）
      */
     MODIFIER_PROPERTY_PROCATTACK_BONUS_DAMAGE_MAGICAL_TARGET = 9,
     /**
-     * Method Name: `GetModifierProcAttack_Feedback`
+     * 魔法反馈攻击特效（例：法力损毁）
      */
     MODIFIER_PROPERTY_PROCATTACK_FEEDBACK = 10,
     /**
-     * Method Name: `GetModifierOverrideAttackDamage`
+     * 总攻击设定（例：虚张声势）
      */
     MODIFIER_PROPERTY_OVERRIDE_ATTACK_DAMAGE = 11,
     /**
-     * Method Name: `GetModifierPreAttack`
+     * 攻击前监听记录攻击行为（例：射手天赋）
      */
     MODIFIER_PROPERTY_PRE_ATTACK = 12,
     /**
-     * Method Name: `GetModifierInvisibilityLevel`
+     * 隐身透明度（例：暗影步）
      */
     MODIFIER_PROPERTY_INVISIBILITY_LEVEL = 13,
     /**
-     * Method Name: `GetModifierInvisibilityAttackBehaviorException`
+     * 攻击不打破隐身（例：暗影之舞）
      */
     MODIFIER_PROPERTY_INVISIBILITY_ATTACK_BEHAVIOR_EXCEPTION = 14,
     /**
-     * Method Name: `GetModifierPersistentInvisibility`
+     * 永久隐身（例：刀光谍影）
      */
     MODIFIER_PROPERTY_PERSISTENT_INVISIBILITY = 15,
     /**
-     * Method Name: `GetModifierMoveSpeedBonus_Constant`
+     * 定值额外移速（例：血肉傀儡）
      */
     MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT = 16,
     /**
-     * Method Name: `GetModifierMoveSpeedOverride`
+     * 基础移速覆盖（例：妖术）
      */
     MODIFIER_PROPERTY_MOVESPEED_BASE_OVERRIDE = 17,
     /**
-     * Method Name: `GetModifierMoveSpeed_MinOverride`
+     * 标准移速下限设定（未知）
      */
     MODIFIER_PROPERTY_MOVESPEED_MIN_OVERRIDE = 18,
     /**
-     * Method Name: `GetModifierMoveSpeed_MaxOverride`
+     * 标准移速上限设定（例：举步生风）
      */
     MODIFIER_PROPERTY_MOVESPEED_MAX_OVERRIDE = 19,
     /**
-     * Method Name: `GetModifierMoveSpeedBonus_Percentage`
+     * 百分比额外移速（例：黄泉颤抖）
      */
     MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE = 20,
     /**
-     * Method Name: `GetModifierMoveSpeedBonus_Percentage_Unique`
+     * 特殊百分比额外移速（例：夜叉）
      */
     MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE_UNIQUE = 21,
     /**
-     * Method Name: `GetModifierMoveSpeedBonus_Special_Boots`
+     * 特殊定值额外移速（例：速度之靴）
      */
     MODIFIER_PROPERTY_MOVESPEED_BONUS_UNIQUE = 22,
     /**
-     * Method Name: `GetModifierMoveSpeedBonus_Special_Boots_2`
+     * 特殊定值额外移速2（未知）
      */
     MODIFIER_PROPERTY_MOVESPEED_BONUS_UNIQUE_2 = 23,
     /**
-     * Method Name: `GetModifierMoveSpeedBonus_Constant_Unique`
+     * 唯一特殊定值额外移速（未知）
      */
     MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT_UNIQUE = 24,
     /**
-     * Method Name: `GetModifierMoveSpeedBonus_Constant_Unique_2`
+     * 唯一特殊定值额外移速2（例：风灵之纹）
      */
     MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT_UNIQUE_2 = 25,
     /**
-     * Method Name: `GetModifierMoveSpeed_Absolute`
+     * 移速设定（例：时间结界）
      */
     MODIFIER_PROPERTY_MOVESPEED_ABSOLUTE = 26,
     /**
-     * Method Name: `GetModifierMoveSpeed_AbsoluteMin`
+     * 绝对移速下限设定（例：奔腾）
      */
     MODIFIER_PROPERTY_MOVESPEED_ABSOLUTE_MIN = 27,
     /**
-     * Method Name: `GetModifierMoveSpeed_AbsoluteMax`
+     * 绝对移速上限设定（例：重如铁锚）
      */
     MODIFIER_PROPERTY_MOVESPEED_ABSOLUTE_MAX = 28,
     /**
-     * Method Name: `GetModifierIgnoreMovespeedLimit`
+     * 突破标准移速上限（例：焦渴）
      */
     MODIFIER_PROPERTY_IGNORE_MOVESPEED_LIMIT = 29,
     /**
-     * Method Name: `GetModifierMoveSpeed_Limit`
+     * 绝对移速上限（例：蜥蜴绝吻）
      */
     MODIFIER_PROPERTY_MOVESPEED_LIMIT = 30,
     /**
-     * Method Name: `GetModifierAttackSpeedBaseOverride`
+     * 攻击速度设定（未知）
      */
     MODIFIER_PROPERTY_ATTACKSPEED_BASE_OVERRIDE = 31,
     /**
-     * Method Name: `GetModifierFixedAttackRate`
+     * 固定攻击间隔（例：怒拳破）
      */
     MODIFIER_PROPERTY_FIXED_ATTACK_RATE = 32,
     /**
-     * Method Name: `GetModifierAttackSpeedBonus_Constant`
+     * 定值攻击速度（例：超强力量）
      */
     MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT = 33,
     /**
-     * Method Name: `GetModifierAttackSpeed_Limit`
+     * 突破攻速限制（例：战斗专注）
      */
     MODIFIER_PROPERTY_IGNORE_ATTACKSPEED_LIMIT = 34,
     /**
-     * Method Name: `GetModifierCooldownReduction_Constant`
+     * 定值冷却时间降低（未知）
      */
     MODIFIER_PROPERTY_COOLDOWN_REDUCTION_CONSTANT = 35,
     /**
-     * Method Name: `GetModifierManacostReduction_Constant`
+     * 定值魔法消耗降低（未知）
      */
     MODIFIER_PROPERTY_MANACOST_REDUCTION_CONSTANT = 36,
     /**
-     * Method Name: `GetModifierHealthcostReduction_Constant`
+     * Lua不可用：定值生命消耗降低（例：德尊血式）
      */
     MODIFIER_PROPERTY_HEALTHCOST_REDUCTION_CONSTANT = 37,
     /**
-     * Method Name: `GetModifierBaseAttackTimeConstant`
+     * 基础攻击间隔设定（例：化学狂暴）
      */
     MODIFIER_PROPERTY_BASE_ATTACK_TIME_CONSTANT = 38,
     /**
-     * Method Name: `GetModifierBaseAttackTimeConstant_Adjust`
+     * Lua不可用：定值基础攻击间隔调整（例：神杖虚妄之诺）
      */
     MODIFIER_PROPERTY_BASE_ATTACK_TIME_CONSTANT_ADJUST = 39,
     /**
-     * Method Name: `GetModifierBaseAttackTimePercentage`
+     * Lua不可用：百分比基础攻击间隔（例：中立附魔粗暴）
      */
     MODIFIER_PROPERTY_BASE_ATTACK_TIME_PERCENTAGE = 40,
     /**
-     * Method Name: `GetModifierAttackPointConstant`
+     * 基础攻击前摇设定（例：严寒烧灼）
      */
     MODIFIER_PROPERTY_ATTACK_POINT_CONSTANT = 41,
     /**
-     * Method Name: `GetModifierBonusDamageOutgoing_Percentage`
+     * Lua不可用：额外攻击百分比调整（例：灵幻兵械）
      */
     MODIFIER_PROPERTY_BONUSDAMAGEOUTGOING_PERCENTAGE = 42,
     /**
-     * Method Name: `GetModifierDamageOutgoing_Percentage`
+     * 百分比总攻击力（例：虚弱）
      */
     MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE = 43,
     /**
-     * Method Name: `GetModifierDamageOutgoing_Percentage_Illusion`
+     * 幻象攻击伤害调整（例：幻象默认）
      */
     MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE_ILLUSION = 44,
     /**
-     * Method Name: `GetModifierDamageOutgoing_Percentage_Illusion_Amplify`
+     * Lua不可用：幻象特殊攻击伤害调整（例：幻象对建筑肉山）
      */
     MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE_ILLUSION_AMPLIFY = 45,
     /**
-     * Method Name: `GetModifierTotalDamageOutgoing_Percentage`
+     * 施加方通用伤害调整（例：决斗达人）
      */
     MODIFIER_PROPERTY_TOTALDAMAGEOUTGOING_PERCENTAGE = 46,
     /**
-     * Method Name: `GetModifierSpellAmplify_Percentage`
+     * 技能增强（例：血怒）
      */
     MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE = 47,
     /**
-     * Method Name: `GetModifierSpellAmplify_PercentageUnique`
+     * 特殊技能增强（例：慧光）
      */
     MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE_UNIQUE = 48,
     /**
-     * Method Name: `GetModifierSpellAmplify_PercentageTarget`
+     * Lua不可用：目标技能增强（未知）
      */
     MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE_TARGET = 49,
     /**
-     * Method Name: `GetModifierHealAmplify_PercentageSource`
+     * 施加方治疗调整（例：圣洁吊坠）
      */
     MODIFIER_PROPERTY_HEAL_AMPLIFY_PERCENTAGE_SOURCE = 50,
     /**
-     * Method Name: `GetModifierHealAmplify_PercentageTarget`
+     * 承受方治疗调整（例：薄葬）
      */
     MODIFIER_PROPERTY_HEAL_AMPLIFY_PERCENTAGE_TARGET = 51,
     /**
-     * Method Name: `GetModifierHPRegenAmplify_Percentage`
+     * 生命恢复调整（例：淬毒武器）
      */
     MODIFIER_PROPERTY_HP_REGEN_AMPLIFY_PERCENTAGE = 52,
     /**
-     * Method Name: `GetModifierLifestealRegenAmplify_Percentage`
+     * 攻击吸血调整（例：散华）
      */
     MODIFIER_PROPERTY_LIFESTEAL_AMPLIFY_PERCENTAGE = 53,
     /**
-     * Method Name: `GetModifierSpellLifestealRegenAmplify_Percentage`
+     * 技能吸血调整（例：霜冷光环）
      */
     MODIFIER_PROPERTY_SPELL_LIFESTEAL_AMPLIFY_PERCENTAGE = 54,
     /**
-     * Method Name: `GetModifierSpellLifestealRegenAmplify_Percentage_Unique`
+     * 特殊技能吸血调整（例：慧光）
      */
     MODIFIER_PROPERTY_SPELL_LIFESTEAL_AMPLIFY_PERCENTAGE_UNIQUE = 55,
     /**
-     * Method Name: `GetModifierMPRegenAmplify_Percentage`
+     * 魔法恢复调整（例：幽魂护罩）
      */
     MODIFIER_PROPERTY_MP_REGEN_AMPLIFY_PERCENTAGE = 56,
     /**
-     * Method Name: `GetModifierMPRegenAmplify_Percentage_Unique`
+     * 特殊魔法恢复调整（例：慧光）
      */
     MODIFIER_PROPERTY_MP_REGEN_AMPLIFY_PERCENTAGE_UNIQUE = 57,
     /**
-     * Method Name: `GetModifierManaDrainAmplify_Percentage`
+     * Lua不可用：魔法消耗增强（未知）
      */
     MODIFIER_PROPERTY_MANA_DRAIN_AMPLIFY_PERCENTAGE = 58,
     /**
-     * Total amplify value is clamped to 0.
-     *
-     *
-     *
-     * Method Name: `GetModifierMPRestoreAmplify_Percentage`.
+     * 魔法获取调整（例：幽魂护罩）
      */
     MODIFIER_PROPERTY_MP_RESTORE_AMPLIFY_PERCENTAGE = 59,
     /**
-     * Method Name: `GetModifierBaseDamageOutgoing_Percentage`
+     * 百分比基础额外攻击力（例：复仇光环）
      */
     MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE = 60,
     /**
-     * Method Name: `GetModifierBaseDamageOutgoing_PercentageUnique`
+     * 特殊百分比基础额外攻击力（未知）
      */
     MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE_UNIQUE = 61,
     /**
-     * Method Name: `GetModifierIncomingDamage_Percentage`
+     * 承受方通用伤害调整（例：激怒）
      */
     MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE = 62,
     /**
-     * Method Name: `GetModifierIncomingPhysicalDamage_Percentage`
+     * 承受方特殊物理伤害调整（例：石化凝视）
      */
     MODIFIER_PROPERTY_INCOMING_PHYSICAL_DAMAGE_PERCENTAGE = 63,
     /**
-     * This property controls 'physical' shield, if defined both on client and server.
-     * Return value on client should be current shield health, as a positive integer,
-     * on server - amount of damage blocked.
-     *
-     *
-     *
-     * Method Name: `GetModifierIncomingPhysicalDamageConstant`.
+     * 物理伤害护盾（例：共鸣脉冲）
      */
     MODIFIER_PROPERTY_INCOMING_PHYSICAL_DAMAGE_CONSTANT = 64,
     /**
-     * This property controls 'spell' shield, if defined both on client and server.
-     * Return value on client should be current shield health, as a positive integer,
-     * on server - amount of damage blocked.
-     *
-     *
-     *
-     * Method Name: `GetModifierIncomingSpellDamageConstant`.
+     * 魔法伤害护盾（例：烈火罩）
      */
     MODIFIER_PROPERTY_INCOMING_SPELL_DAMAGE_CONSTANT = 65,
     /**
-     * Method Name: `GetModifierEvasion_Constant`
+     * 闪避（例：魅影无形）
      */
     MODIFIER_PROPERTY_EVASION_CONSTANT = 66,
     /**
-     * Method Name: `GetModifierNegativeEvasion_Constant`
+     * 负值闪避（未知）
      */
     MODIFIER_PROPERTY_NEGATIVE_EVASION_CONSTANT = 67,
     /**
-     * Method Name: `GetModifierStatusResistance`
+     * 特殊状态抗性（例：散夜对剑）
      */
     MODIFIER_PROPERTY_STATUS_RESISTANCE = 68,
     /**
-     * Method Name: `GetModifierStatusResistanceStacking`
+     * 状态抗性（例：威吓）
      */
     MODIFIER_PROPERTY_STATUS_RESISTANCE_STACKING = 69,
     /**
-     * Method Name: `GetModifierStatusResistanceCaster`
+     * 负面状态增强（例：技能窃取）
      */
     MODIFIER_PROPERTY_STATUS_RESISTANCE_CASTER = 70,
     /**
-     * Method Name: `GetModifierAvoidDamage`
+     * 首端伤害无效化（例：回光返照）
      */
     MODIFIER_PROPERTY_AVOID_DAMAGE = 71,
     /**
-     * Method Name: `GetModifierAvoidSpell`
+     * 技能吸收（未知）
      */
     MODIFIER_PROPERTY_AVOID_SPELL = 72,
     /**
-     * Method Name: `GetModifierMiss_Percentage`
+     * 致盲（例：旋风飞斧）
      */
     MODIFIER_PROPERTY_MISS_PERCENTAGE = 73,
     /**
-     * Values above 100% are ignored.
-     *
-     *
-     *
-     * Method Name: `GetModifierPhysicalArmorBase_Percentage`.
+     * 百分比基础护甲（例：自然秩序）
      */
     MODIFIER_PROPERTY_PHYSICAL_ARMOR_BASE_PERCENTAGE = 74,
     /**
-     * Method Name: `GetModifierPhysicalArmorTotal_Percentage`
+     * Lua不可用：百分比总护甲调整（未知）
      */
     MODIFIER_PROPERTY_PHYSICAL_ARMOR_TOTAL_PERCENTAGE = 75,
     /**
-     * Method Name: `GetModifierPhysicalArmorBonus`
+     * 定值额外护甲（例：战吼）
      */
     MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS = 76,
     /**
-     * Method Name: `GetModifierPhysicalArmorBonusUnique`
+     * 特殊定值额外护甲（例：天鹰之戒）
      */
     MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS_UNIQUE = 77,
     /**
-     * Method Name: `GetModifierPhysicalArmorBonusUniqueActive`
+     * 特殊主动定值额外护甲（例：玄冥盾牌）
      */
     MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS_UNIQUE_ACTIVE = 78,
     /**
-     * Method Name: `GetModifierPhysicalArmorBonusPost`
+     * Lua不可用：后结算定值护甲（例：灵魂链接）
      */
     MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS_POST = 79,
     /**
-     * Method Name: `GetModifierMinPhysicalArmor`
+     * Lua不可用：最低护甲设定（例：刚强巨盾）
      */
     MODIFIER_PROPERTY_MIN_PHYSICAL_ARMOR = 80,
     /**
-     * Method Name: `GetModifierIgnorePhysicalArmor`
+     * 忽略物理护甲（例：一剑穿心）
      */
     MODIFIER_PROPERTY_IGNORE_PHYSICAL_ARMOR = 81,
     /**
-     * Method Name: `GetModifierMagicalResistanceBaseReduction`
+     * Lua不可用：基础魔法抗性降低（例：自然秩序）
      */
     MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BASE_REDUCTION = 82,
     /**
-     * Method Name: `GetModifierMagicalResistanceDirectModification`
+     * 线性魔法抗性（未知）
      */
     MODIFIER_PROPERTY_MAGICAL_RESISTANCE_DIRECT_MODIFICATION = 83,
     /**
-     * Method Name: `GetModifierMagicalResistanceBonus`
+     * 额外魔法抗性（例：法术反制）
      */
     MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS = 84,
     /**
-     * Method Name: `GetModifierMagicalResistanceBonusIllusions`
+     * Lua不可用：幻象魔法抗性（例：暗绘）
      */
     MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS_ILLUSIONS = 85,
     /**
-     * Method Name: `GetModifierMagicalResistanceBonusUnique`
+     * Lua不可用：特殊魔法抗性（未知）
      */
     MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS_UNIQUE = 86,
     /**
-     * Method Name: `GetModifierMagicalResistanceDecrepifyUnique`
+     * 虚无魔法抗性（例：衰老）
      */
     MODIFIER_PROPERTY_MAGICAL_RESISTANCE_DECREPIFY_UNIQUE = 87,
     /**
-     * Method Name: `GetModifierBaseRegen`
+     * 基础魔法恢复无效化（未知）
      */
     MODIFIER_PROPERTY_BASE_MANA_REGEN = 88,
     /**
-     * Method Name: `GetModifierConstantManaRegen`
+     * 定值魔法恢复（例：奥术光环）
      */
     MODIFIER_PROPERTY_MANA_REGEN_CONSTANT = 89,
     /**
-     * Method Name: `GetModifierConstantManaRegenUnique`
+     * 特殊定值魔法恢复（例：天鹰之戒）
      */
     MODIFIER_PROPERTY_MANA_REGEN_CONSTANT_UNIQUE = 90,
     /**
-     * Method Name: `GetModifierTotalPercentageManaRegen`
+     * 百分比最大魔法恢复（例：泉水回春）
      */
     MODIFIER_PROPERTY_MANA_REGEN_TOTAL_PERCENTAGE = 91,
     /**
-     * Method Name: `GetModifierConstantHealthRegen`
+     * 定值生命恢复（例：活性护甲）
      */
     MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT = 92,
     /**
-     * Method Name: `GetModifierHealthRegenPercentage`
+     * 百分比最大生命恢复（例：泉水回春）
      */
     MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE = 93,
     /**
-     * Method Name: `GetModifierHealthRegenPercentageUnique`
+     * 特殊百分比生命恢复（例：恐鳌之心）
      */
     MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE_UNIQUE = 94,
     /**
-     * Method Name: `GetModifierHealthBonus`
+     * 定值最大生命值（例：活力之球）
      */
     MODIFIER_PROPERTY_HEALTH_BONUS = 95,
     /**
-     * Method Name: `GetModifierManaBonus`
+     * 定值最大魔法值（例：能量之球）
      */
     MODIFIER_PROPERTY_MANA_BONUS = 96,
     /**
-     * Method Name: `GetModifierExtraStrengthBonus`
+     * 特殊定值额外力量（例：腐朽）
      */
     MODIFIER_PROPERTY_EXTRA_STRENGTH_BONUS = 97,
     /**
-     * Method Name: `GetModifierExtraHealthBonus`
+     * 特殊定值最大生命值（例：感染）
      */
     MODIFIER_PROPERTY_EXTRA_HEALTH_BONUS = 98,
     /**
-     * Method Name: `GetModifierExtraManaBonus`
+     * 特殊定值最大魔法值（例：灵魂之戒）
      */
     MODIFIER_PROPERTY_EXTRA_MANA_BONUS = 99,
     /**
-     * Method Name: `GetModifierExtraManaBonusPercentage`
+     * Lua不可用：百分比额外最大魔法值（未知）
      */
     MODIFIER_PROPERTY_EXTRA_MANA_BONUS_PERCENTAGE = 100,
     /**
-     * Method Name: `GetModifierExtraHealthPercentage`
+     * 百分比最大生命值（例：磐石光环）
      */
     MODIFIER_PROPERTY_EXTRA_HEALTH_PERCENTAGE = 101,
     /**
-     * Method Name: `GetModifierExtraManaPercentage`
+     * 百分比最大魔法值（例：空灵挂件）
      */
     MODIFIER_PROPERTY_EXTRA_MANA_PERCENTAGE = 102,
     /**
-     * Method Name: `GetModifierBonusStats_Strength`
+     * 定值额外力量（例：食人魔之斧）
      */
     MODIFIER_PROPERTY_STATS_STRENGTH_BONUS = 103,
     /**
-     * Method Name: `GetModifierBonusStats_Agility`
+     * 定值额外敏捷（例：欢欣之刃）
      */
     MODIFIER_PROPERTY_STATS_AGILITY_BONUS = 104,
     /**
-     * Method Name: `GetModifierBonusStats_Intellect`
+     * 定值额外智力（例：魔力法杖）
      */
     MODIFIER_PROPERTY_STATS_INTELLECT_BONUS = 105,
     /**
-     * Method Name: `GetModifierBonusStats_Strength_Percentage`
+     * Lua不可用：百分比总力量（例：血肉傀儡）
      */
     MODIFIER_PROPERTY_STATS_STRENGTH_BONUS_PERCENTAGE = 106,
     /**
-     * Method Name: `GetModifierBonusStats_Agility_Percentage`
+     * Lua不可用：百分比总敏捷（例：射手天赋）
      */
     MODIFIER_PROPERTY_STATS_AGILITY_BONUS_PERCENTAGE = 107,
     /**
-     * Method Name: `GetModifierBonusStats_Intellect_Percentage`
+     * Lua不可用：百分比总智力（例：通灵头带）
      */
     MODIFIER_PROPERTY_STATS_INTELLECT_BONUS_PERCENTAGE = 108,
     /**
@@ -1583,119 +1563,119 @@ declare enum modifierfunction {
      */
     MODIFIER_PROPERTY_STATS_INTELLECT_NONE = 109,
     /**
-     * Method Name: `GetModifierCastRangeBonus`
+     * 特殊定值施法距离（例：以太透镜）
      */
     MODIFIER_PROPERTY_CAST_RANGE_BONUS = 110,
     /**
-     * Method Name: `GetModifierCastRangeBonusPercentage`
+     * Lua不可用：百分比施法距离（例：折跃耀光）
      */
     MODIFIER_PROPERTY_CAST_RANGE_BONUS_PERCENTAGE = 111,
     /**
-     * Method Name: `GetModifierCastRangeBonusTarget`
+     * 目标额外施法距离（未知）
      */
     MODIFIER_PROPERTY_CAST_RANGE_BONUS_TARGET = 112,
     /**
-     * Method Name: `GetModifierCastRangeBonusStacking`
+     * 定值施法距离（例：奥术至尊）
      */
     MODIFIER_PROPERTY_CAST_RANGE_BONUS_STACKING = 113,
     /**
-     * Method Name: `GetModifierAttackRangeOverride`
+     * 固有攻击距离设定（例：变形）
      */
     MODIFIER_PROPERTY_ATTACK_RANGE_BASE_OVERRIDE = 114,
     /**
-     * Method Name: `GetModifierAttackRangeBonus`
+     * 定值攻击距离（例：瞄准）
      */
     MODIFIER_PROPERTY_ATTACK_RANGE_BONUS = 115,
     /**
-     * Method Name: `GetModifierAttackRangeBonusUnique`
+     * 特殊定值攻击距离（例：魔龙枪）
      */
     MODIFIER_PROPERTY_ATTACK_RANGE_BONUS_UNIQUE = 116,
     /**
-     * Method Name: `GetModifierAttackRangeBonusPercentage`
+     * 百分比攻击距离（例：折跃耀光）
      */
     MODIFIER_PROPERTY_ATTACK_RANGE_BONUS_PERCENTAGE = 117,
     /**
-     * Method Name: `GetModifierMaxAttackRange`
+     * 绝对攻击距离设定（例：变身）
      */
     MODIFIER_PROPERTY_MAX_ATTACK_RANGE = 118,
     /**
-     * Method Name: `GetModifierProjectileSpeedBonus`
+     * 定值弹道速度（例：严寒烧灼）
      */
     MODIFIER_PROPERTY_PROJECTILE_SPEED_BONUS = 119,
     /**
-     * Method Name: `GetModifierProjectileSpeedBonusPercentage`
+     * Lua不可用：百分比弹道速度（例：银闪护符）
      */
     MODIFIER_PROPERTY_PROJECTILE_SPEED_BONUS_PERCENTAGE = 120,
     /**
-     * Method Name: `GetModifierProjectileName`
+     * 弹道特效替换（例：魔化）
      */
     MODIFIER_PROPERTY_PROJECTILE_NAME = 121,
     /**
-     * Method Name: `ReincarnateTime`
+     * 重生（例：绝冥再生）
      */
     MODIFIER_PROPERTY_REINCARNATION = 122,
     /**
-     * Method Name: `ReincarnateSuppressFX`
+     * 关闭重生特效（未知）
      */
     MODIFIER_PROPERTY_REINCARNATION_SUPPRESS_FX = 123,
     /**
-     * Method Name: `GetModifierConstantRespawnTime`
+     * 特殊定值复活时间（例：吸血灵魂）
      */
     MODIFIER_PROPERTY_RESPAWNTIME = 124,
     /**
-     * Method Name: `GetModifierPercentageRespawnTime`
+     * 百分比复活时间降低（例：吸血灵魂）
      */
     MODIFIER_PROPERTY_RESPAWNTIME_PERCENTAGE = 125,
     /**
-     * Method Name: `GetModifierStackingRespawnTime`
+     * 定值复活时间（未知）
      */
     MODIFIER_PROPERTY_RESPAWNTIME_STACKING = 126,
     /**
-     * Method Name: `GetModifierPercentageCooldown`
+     * 百分比冷却缩减（例：玲珑心）
      */
     MODIFIER_PROPERTY_COOLDOWN_PERCENTAGE = 127,
     /**
-     * Method Name: `GetModifierPercentageCooldownOngoing`
+     * Lua不可用：冷却速度调整（例：时间膨胀）
      */
     MODIFIER_PROPERTY_COOLDOWN_PERCENTAGE_ONGOING = 128,
     /**
-     * Method Name: `GetModifierPercentageCasttime`
+     * 施法动作降低（例：逆转时空）
      */
     MODIFIER_PROPERTY_CASTTIME_PERCENTAGE = 129,
     /**
-     * Method Name: `GetModifierPercentageAttackAnimTime`
+     * Lua不可用：百分比攻击动作（例：海象神拳！）
      */
     MODIFIER_PROPERTY_ATTACK_ANIM_TIME_PERCENTAGE = 130,
     /**
-     * Method Name: `GetModifierPercentageManacost`
+     * 特殊百分比魔法消耗降低（例：散慧对剑）
      */
     MODIFIER_PROPERTY_MANACOST_PERCENTAGE = 131,
     /**
-     * Method Name: `GetModifierPercentageManacostStacking`
+     * 百分比魔法消耗降低（例：奥术符）
      */
     MODIFIER_PROPERTY_MANACOST_PERCENTAGE_STACKING = 132,
     /**
-     * Method Name: `GetModifierPercentageHealthcost`
+     * 特殊百分比生命消耗降低（未知）
      */
     MODIFIER_PROPERTY_HEALTHCOST_PERCENTAGE = 133,
     /**
-     * Method Name: `GetModifierPercentageHealthcostStacking`
+     * 百分比生命消耗降低（未知）
      */
     MODIFIER_PROPERTY_HEALTHCOST_PERCENTAGE_STACKING = 134,
     /**
-     * Method Name: `GetModifierConstantDeathGoldCost`
+     * 定值死亡损失金钱（未知）
      */
     MODIFIER_PROPERTY_DEATHGOLDCOST = 135,
     /**
-     * Method Name: `GetModifierPercentageDeathGoldCost`
+     * 百分比死亡损失金钱（例：海盗帽）
      */
     MODIFIER_PROPERTY_PERCENTAGE_DEATHGOLDCOST = 136,
     /**
-     * Method Name: `GetModifierPercentageExpRateBoost`
+     * 经验倍率调整（例：从众心理）
      */
     MODIFIER_PROPERTY_EXP_RATE_BOOST = 137,
     /**
-     * Method Name: `GetModifierPercentageGoldRateBoost`
+     * 金钱倍率调整（未知）
      */
     MODIFIER_PROPERTY_GOLD_RATE_BOOST = 138,
     /**
@@ -1703,27 +1683,27 @@ declare enum modifierfunction {
      */
     MODIFIER_PROPERTY_KILL_ASSIST_GOLD_BOOST = 139,
     /**
-     * Method Name: `GetModifierPercentageConvertExpToGold`
+     * Lua不可用：百分比经验金钱转化（未知）
      */
     MODIFIER_PROPERTY_CONVERT_EXP_TO_GOLD_PCT = 140,
     /**
-     * Method Name: `GetModifierPreAttack_CriticalStrike`
+     * 致命一击（例：混沌一击）
      */
     MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE = 141,
     /**
-     * Method Name: `GetModifierPreAttack_Target_CriticalStrike`
+     * 目标致命一击（例：翔影之钗）
      */
     MODIFIER_PROPERTY_PREATTACK_TARGET_CRITICALSTRIKE = 142,
     /**
-     * Method Name: `GetModifierMagical_ConstantBlock`
+     * 魔法伤害格挡（例：凝魂之露）
      */
     MODIFIER_PROPERTY_MAGICAL_CONSTANT_BLOCK = 143,
     /**
-     * Method Name: `GetModifierPhysical_ConstantBlock`
+     * 物理伤害格挡（例：海妖外壳）
      */
     MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK = 144,
     /**
-     * Method Name: `GetModifierPhysical_ConstantBlockSpecial`
+     * 特殊物理伤害格挡（未知）
      */
     MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK_SPECIAL = 145,
     /**
@@ -1731,304 +1711,315 @@ declare enum modifierfunction {
      */
     MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK_BONUS = 146,
     /**
-     * Method Name: `GetModifierInnateDamageBlockPctOverride`
+     * Lua不可用：近战物理伤害格挡概率覆盖（例：刚毅）
      */
     MODIFIER_PROPERTY_INNATE_DAMAGE_BLOCK_PCT_OVERRIDE = 147,
     /**
-     * Method Name: `GetModifierPhysical_ConstantBlockUnavoidablePreArmor`
+     * 前端伤害格挡（例：魔法盾）
      */
     MODIFIER_PROPERTY_TOTAL_CONSTANT_BLOCK_UNAVOIDABLE_PRE_ARMOR = 148,
     /**
-     * Method Name: `GetModifierTotal_ConstantBlock`
+     * 末端伤害格挡（例：肉盾）
      */
     MODIFIER_PROPERTY_TOTAL_CONSTANT_BLOCK = 149,
     /**
-     * Method Name: `GetOverrideAnimation`
+     * 完整动画覆盖（例：太多了）
      */
     MODIFIER_PROPERTY_OVERRIDE_ANIMATION = 150,
     /**
-     * Method Name: `GetOverrideAnimationRate`
+     * 动画速率调整（例：太多了）
      */
     MODIFIER_PROPERTY_OVERRIDE_ANIMATION_RATE = 151,
     /**
-     * Method Name: `GetAbsorbSpell`
+     * 技能抵挡（例：林肯法球）
      */
     MODIFIER_PROPERTY_ABSORB_SPELL = 152,
     /**
-     * Method Name: `GetReflectSpell`
+     * 技能反弹（例：清莲宝珠）
      */
     MODIFIER_PROPERTY_REFLECT_SPELL = 153,
     /**
-     * Method Name: `GetDisableAutoAttack`
+     * 禁止自动攻击（例：相位转移）
      */
     MODIFIER_PROPERTY_DISABLE_AUTOATTACK = 154,
     /**
-     * Method Name: `GetBonusDayVision`
+     * 定值白天视野（例：辰星破晓）
      */
     MODIFIER_PROPERTY_BONUS_DAY_VISION = 155,
     /**
-     * Method Name: `GetBonusDayVisionPercentage`
+     * 百分比白天视野（例：邪道私语）
      */
     MODIFIER_PROPERTY_BONUS_DAY_VISION_PERCENTAGE = 156,
     /**
-     * Method Name: `GetBonusNightVision`
+     * 定值夜晚视野（例：月之祝福）
      */
     MODIFIER_PROPERTY_BONUS_NIGHT_VISION = 157,
     /**
-     * Method Name: `GetBonusNightVisionUnique`
+     * 特殊定值夜晚视野（例：银月之晶）
      */
     MODIFIER_PROPERTY_BONUS_NIGHT_VISION_UNIQUE = 158,
     /**
-     * Method Name: `GetBonusVisionPercentage`
+     * 百分比日夜视野（例：老版荒芜）
      */
     MODIFIER_PROPERTY_BONUS_VISION_PERCENTAGE = 159,
     /**
-     * Method Name: `GetFixedDayVision`
+     * 绝对白天视野上限设定（例：丛林之舞）
      */
     MODIFIER_PROPERTY_FIXED_DAY_VISION = 160,
     /**
-     * Method Name: `GetFixedNightVision`
+     * 绝对夜晚视野上限设定（例：丛林之舞）
      */
     MODIFIER_PROPERTY_FIXED_NIGHT_VISION = 161,
     /**
-     * Method Name: `GetMinHealth`
+     * 最低生命值设定（例：薄葬）
      */
     MODIFIER_PROPERTY_MIN_HEALTH = 162,
     /**
-     * Method Name: `GetMinMana`
+     * 最低魔法值设定（例：特别储备）
      */
     MODIFIER_PROPERTY_MIN_MANA = 163,
     /**
-     * Method Name: `GetAbsoluteNoDamagePhysical`
+     * 物理伤害无效化（例：守护天使）
      */
     MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL = 164,
     /**
-     * Method Name: `GetAbsoluteNoDamageMagical`
+     * 魔法伤害无效化（例：命运敕令）
      */
     MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL = 165,
     /**
-     * Method Name: `GetAbsoluteNoDamagePure`
+     * 纯粹伤害无效化（例：防御符文）
      */
     MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE = 166,
     /**
-     * Method Name: `GetIsIllusion`
+     * 幻象标识（例：幻象默认）
      */
     MODIFIER_PROPERTY_IS_ILLUSION = 167,
     /**
-     * Method Name: `GetModifierIllusionLabel`
+     * 幻象标签（例：幻象默认）
      */
     MODIFIER_PROPERTY_ILLUSION_LABEL = 168,
     /**
-     * Method Name: `GetModifierStrongIllusion`
+     * Lua不可用：强幻象标签（例：复仇光环）
      */
     MODIFIER_PROPERTY_STRONG_ILLUSION = 169,
     /**
-     * Method Name: `GetModifierSuperIllusion`
+     * Lua不可用：可施法幻象标签（例：复仇光环）
      */
     MODIFIER_PROPERTY_SUPER_ILLUSION = 170,
     /**
-     * Method Name: `GetModifierSuperIllusionWithUltimate`
+     * 终极技能可施法幻象标签（例：复仇光环）
      */
     MODIFIER_PROPERTY_SUPER_ILLUSION_WITH_ULTIMATE = 171,
     /**
-     * Method Name: `GetModifierXPDuringDeath`
+     * Lua不可用：死亡可获得经验（例：复仇光环）
      */
     MODIFIER_PROPERTY_XP_DURING_DEATH = 172,
     /**
-     * Method Name: `GetModifierTurnRate_Percentage`
+     * 百分比转身速率（例：粘性燃油）
      */
     MODIFIER_PROPERTY_TURN_RATE_PERCENTAGE = 173,
     /**
-     * Method Name: `GetModifierTurnRate_Override`
+     * 转身速率覆盖（例：相位鞋）
      */
     MODIFIER_PROPERTY_TURN_RATE_OVERRIDE = 174,
     /**
-     * Method Name: `GetDisableHealing`
+     * 生命冻结（例：冰晶爆轰）
      */
     MODIFIER_PROPERTY_DISABLE_HEALING = 175,
     /**
-     * Method Name: `GetDisableManaGain`
+     * Lua不可用：魔法获取无效化（例：神杖闪烁）
      */
     MODIFIER_PROPERTY_DISABLE_MANA_GAIN = 176,
     /**
-     * Method Name: `GetAlwaysAllowAttack`
+     * 无视攻击距离（例：飓风长戟）
      */
     MODIFIER_PROPERTY_ALWAYS_ALLOW_ATTACK = 177,
     /**
-     * Method Name: `GetAllowEtherealAttack`
+     * Lua不可用：可攻击虚无单位（例：超自然）
      */
     MODIFIER_PROPERTY_ALWAYS_ETHEREAL_ATTACK = 178,
     /**
-     * Method Name: `GetOverrideAttackMagical`
+     * 无视攻击免疫（例：超自然）
      */
     MODIFIER_PROPERTY_OVERRIDE_ATTACK_MAGICAL = 179,
     /**
-     * Method Name: `GetModifierUnitStatsNeedsRefresh`
+     * 即时刷新统计情况（例：奥术符）
      */
     MODIFIER_PROPERTY_UNIT_STATS_NEEDS_REFRESH = 180,
+    /**
+     * 百分比小兵击杀金钱（未知）
+     */
     MODIFIER_PROPERTY_BOUNTY_CREEP_MULTIPLIER = 181,
+    /**
+     * 百分比其他单位击杀金钱（未知）
+     */
     MODIFIER_PROPERTY_BOUNTY_OTHER_MULTIPLIER = 182,
     /**
-     * Method Name: `GetModifierUnitDisllowUpgrading`
+     * Lua不可用：禁止单位升级（未知）
      */
     MODIFIER_PROPERTY_UNIT_DISALLOW_UPGRADING = 183,
     /**
-     * Method Name: `GetModifierDodgeProjectile`
+     * 持续躲避（例：老版扫射）
      */
     MODIFIER_PROPERTY_DODGE_PROJECTILE = 184,
     /**
-     * Method Name: `GetTriggerCosmeticAndEndAttack`
+     * Lua不可用：仅触发攻击动作特效（未知）
      */
     MODIFIER_PROPERTY_TRIGGER_COSMETIC_AND_END_ATTACK = 185,
     /**
-     * Method Name: `GetPrimaryStatDamageMultiplier`
+     * 百分比属性攻击力（未知）
      */
     MODIFIER_PROPERTY_PRIMARY_STAT_DAMAGE_MULTIPLIER = 186,
     /**
-     * Method Name: `GetModifierPreAttack_DeadlyBlow`
+     * Lua不可用：致死打击（未知）
      */
     MODIFIER_PROPERTY_PREATTACK_DEADLY_BLOW = 187,
     /**
-     * Method Name: `GetAlwaysAutoAttackWhileHoldPosition`
+     * Lua不可用：固守原位仍自动攻击（未知）
      */
     MODIFIER_PROPERTY_ALWAYS_AUTOATTACK_WHILE_HOLD_POSITION = 188,
     /**
-     * Method Name: `GetPhysicalArmorPiercingPercentageTarget`
+     * Lua不可用：百分比物理抗性穿透（例：地狱之裂）
      */
     MODIFIER_PROPERTY_PHYSICAL_ARMOR_PIERCING_PERCENTAGE_TARGET = 189,
     /**
-     * Method Name: `GetMagicalArmorPiercingPercentageTarget`
+     * Lua不可用：百分比魔法抗性穿透（未知）
      */
     MODIFIER_PROPERTY_MAGICAL_ARMOR_PIERCING_PERCENTAGE_TARGET = 190,
     /**
-     * Method Name: `GetCriticalStrikeBonus`
+     * Lua不可用：致命一击倍率增加（未知）
      */
     MODIFIER_PROPERTY_CRITICAL_STRIKE_BONUS = 191,
     /**
-     * Method Name: `GetConvertAttackPhysicalToPure`
+     * Lua不可用：物理纯粹转化攻击特效（未知）
      */
     MODIFIER_PROPERTY_CONVERT_ATTACK_PHYSICAL_TO_PURE = 192,
     /**
-     * Method Name: `GetBuffAmplification`
+     * Lua不可用：增益时间增强（例：安可）
      */
     MODIFIER_PROPERTY_BUFF_AMPLIFICATION = 193,
     /**
-     * Method Name: `OnSpellTargetReady`
+     * 选定施法目标时（例：老版灵匣）
      */
     MODIFIER_EVENT_ON_SPELL_TARGET_READY = 194,
     /**
-     * Method Name: `OnAttackRecord`
+     * 记录攻击时（例：神枪在手）
      */
     MODIFIER_EVENT_ON_ATTACK_RECORD = 195,
     /**
-     * Method Name: `OnAttackStart`
+     * 开始攻击抬手时（例：不可侵犯）
      */
     MODIFIER_EVENT_ON_ATTACK_START = 196,
     /**
-     * Method Name: `OnAttack`
+     * 攻击发出时（例：暗影之境）
      */
     MODIFIER_EVENT_ON_ATTACK = 197,
     /**
-     * Method Name: `OnAttackLanded`
+     * 攻击命中时（例：腐蚀兵械）
      */
     MODIFIER_EVENT_ON_ATTACK_LANDED = 198,
     /**
-     * Method Name: `OnAttackFail`
+     * 攻击失败时（例：液态火）
      */
     MODIFIER_EVENT_ON_ATTACK_FAIL = 199,
     /**
-     * Happens even if attack can't be issued.
-     *
-     *
-     *
-     * Method Name: `OnAttackAllied`.
+     * 攻击友方时（未知）
      */
     MODIFIER_EVENT_ON_ATTACK_ALLIED = 200,
     /**
-     * Method Name: `OnProjectileDodge`
+     * 弹道被躲避时（例：顽皮克敌）
      */
     MODIFIER_EVENT_ON_PROJECTILE_DODGE = 201,
     /**
-     * Method Name: `OnOrder`
+     * 下达指令时（例：相位转移）
      */
     MODIFIER_EVENT_ON_ORDER = 202,
     /**
-     * Method Name: `OnOrderReceived`
+     * Lua不可用：收到指令时（未知）
      */
     MODIFIER_EVENT_ON_ORDER_RECEIVED = 203,
     /**
-     * Method Name: `OnUnitMoved`
+     * 单位移动时（例：隐匿）
      */
     MODIFIER_EVENT_ON_UNIT_MOVED = 204,
     /**
-     * Method Name: `OnAbilityStart`
+     * 开始施法时（未知）
      */
     MODIFIER_EVENT_ON_ABILITY_START = 205,
     /**
-     * Method Name: `OnAbilityExecuted`
+     * 施法完成时（例：余震）
      */
     MODIFIER_EVENT_ON_ABILITY_EXECUTED = 206,
     /**
-     * Method Name: `OnAbilityFullyCast`
+     * 完全施放时（例：奥术积累）
      */
     MODIFIER_EVENT_ON_ABILITY_FULLY_CAST = 207,
     /**
-     * Method Name: `OnBreakInvisibility`
+     * 打破隐身时（例：影刃）
      */
     MODIFIER_EVENT_ON_BREAK_INVISIBILITY = 208,
     /**
-     * Method Name: `OnAbilityEndChannel`
+     * 持续施法结束时（例：遗言）
      */
     MODIFIER_EVENT_ON_ABILITY_END_CHANNEL = 209,
+    /**
+     * Lua不可用：升级时（未知）
+     */
     MODIFIER_EVENT_ON_PROCESS_UPGRADE = 210,
+    /**
+     * Lua不可用：刷新时（未知）
+     */
     MODIFIER_EVENT_ON_REFRESH = 211,
     /**
-     * Method Name: `OnTakeDamage`
+     * 受到伤害时（例：腐蚀皮肤）
      */
     MODIFIER_EVENT_ON_TAKEDAMAGE = 212,
     /**
-     * Method Name: `OnDamagePrevented`
+     * 阻止死亡时（例：禽戏）
      */
     MODIFIER_EVENT_ON_DEATH_PREVENTED = 213,
     /**
-     * Method Name: `OnStateChanged`
+     * 状态改变时（例：幽魂护罩）
      */
     MODIFIER_EVENT_ON_STATE_CHANGED = 214,
+    /**
+     * Lua不可用：触发法球效果时（未知）
+     */
     MODIFIER_EVENT_ON_ORB_EFFECT = 215,
     /**
-     * Method Name: `OnProcessCleave`
+     * 产生攻击分裂时（例：巨力挥舞）
      */
     MODIFIER_EVENT_ON_PROCESS_CLEAVE = 216,
     /**
-     * Method Name: `OnDamageCalculated`
+     * 造成伤害时（例：幽魂之剑）
      */
     MODIFIER_EVENT_ON_DAMAGE_CALCULATED = 217,
     /**
-     * Method Name: `OnMagicDamageCalculated`
+     * 造成技能伤害时（例：束手束脚）
      */
     MODIFIER_EVENT_ON_MAGIC_DAMAGE_CALCULATED = 218,
     /**
-     * Method Name: `OnAttacked`
+     * 攻击结束时（例：并列）
      */
     MODIFIER_EVENT_ON_ATTACKED = 219,
     /**
-     * Method Name: `OnDeath`
+     * 单位死亡时（例：衰退光环）
      */
     MODIFIER_EVENT_ON_DEATH = 220,
     /**
-     * Method Name: `OnDeathCompleted`
+     * 完全死亡时（例：临别一枪）
      */
     MODIFIER_EVENT_ON_DEATH_COMPLETED = 221,
     /**
-     * Method Name: `OnRespawn`
+     * 单位复活时（例：下地狱再上来）
      */
     MODIFIER_EVENT_ON_RESPAWN = 222,
     /**
-     * Method Name: `OnSpentMana`
+     * 消耗魔法时（例：幽冥守卫）
      */
     MODIFIER_EVENT_ON_SPENT_MANA = 223,
     /**
-     * Method Name: `OnSpentHealth`
+     * 消耗生命时（未知）
      */
     MODIFIER_EVENT_ON_SPENT_HEALTH = 224,
     /**
@@ -2036,35 +2027,35 @@ declare enum modifierfunction {
      */
     MODIFIER_EVENT_ON_SPENT_ITEM_CHARGE = 225,
     /**
-     * Method Name: `OnTeleporting`
+     * 正在传送时（例：剑刃风暴）
      */
     MODIFIER_EVENT_ON_TELEPORTING = 226,
     /**
-     * Method Name: `OnTeleported`
+     * 传送结束时（例：降临）
      */
     MODIFIER_EVENT_ON_TELEPORTED = 227,
     /**
-     * Method Name: `OnSetLocation`
+     * 设定单位位置时（例：扔出）
      */
     MODIFIER_EVENT_ON_SET_LOCATION = 228,
     /**
-     * Method Name: `OnHealthGained`
+     * 获取生命时（未知）
      */
     MODIFIER_EVENT_ON_HEALTH_GAINED = 229,
     /**
-     * Method Name: `OnManaGained`
+     * 获取魔法时（例：羁绊）
      */
     MODIFIER_EVENT_ON_MANA_GAINED = 230,
     /**
-     * Method Name: `OnTakeDamageKillCredit`
+     * 产生击杀归属时（例：死神镰刀）
      */
     MODIFIER_EVENT_ON_TAKEDAMAGE_KILLCREDIT = 231,
     /**
-     * Method Name: `OnHeroKilled`
+     * 击杀英雄时（例：血色外衣）
      */
     MODIFIER_EVENT_ON_HERO_KILLED = 232,
     /**
-     * Method Name: `OnHealReceived`
+     * 获得治疗时（例：羁绊）
      */
     MODIFIER_EVENT_ON_HEAL_RECEIVED = 233,
     /**
@@ -2072,19 +2063,19 @@ declare enum modifierfunction {
      */
     MODIFIER_EVENT_ON_REDIRECT_HEALTH_GAIN = 234,
     /**
-     * Method Name: `OnBuildingKilled`
+     * 摧毁建筑时（例：毁灭之赏）
      */
     MODIFIER_EVENT_ON_BUILDING_KILLED = 235,
     /**
-     * Method Name: `OnModelChanged`
+     * 模型替换时（例：古龙形态）
      */
     MODIFIER_EVENT_ON_MODEL_CHANGED = 236,
     /**
-     * Method Name: `OnModifierAdded`
+     * 施加modifier时（例：咤）
      */
     MODIFIER_EVENT_ON_MODIFIER_ADDED = 237,
     /**
-     * Method Name: `OnModifierRemoved`
+     * Lua不可用：移除modifier时（例：神杖高射火炮）
      */
     MODIFIER_EVENT_ON_MODIFIER_REMOVED = 238,
     /**
@@ -2096,327 +2087,315 @@ declare enum modifierfunction {
      */
     MODIFIER_EVENT_ON_SHARD_UPGRADE_SELECTED = 240,
     /**
-     * Method Name: `OnTooltip`
+     * 技能数值说明（例：太多了）
      */
     MODIFIER_PROPERTY_TOOLTIP = 241,
     /**
-     * Method Name: `GetModifierModelChange`
+     * 模型替换（例：真熊形态）
      */
     MODIFIER_PROPERTY_MODEL_CHANGE = 242,
     /**
-     * Method Name: `GetModifierModelScale`
+     * 定值模型体积（例：腐朽）
      */
     MODIFIER_PROPERTY_MODEL_SCALE = 243,
     /**
-     * Method Name: `GetModifierModelScaleAnimateTime`
+     * 模型体积动画时间（未知）
      */
     MODIFIER_PROPERTY_MODEL_SCALE_ANIMATE_TIME = 244,
     /**
-     * Method Name: `GetModifierModelScaleUseInOutEase`
+     * 模型体积缓入缓出动画（未知）
      */
     MODIFIER_PROPERTY_MODEL_SCALE_USE_IN_OUT_EASE = 245,
     /**
-     * Method Name: `GetModifierModelScaleConstant`
+     * 模型体积覆盖（未知）
      */
     MODIFIER_PROPERTY_MODEL_SCALE_CONSTANT = 246,
     /**
-     * Applies scepter when this property is active
-     *
-     *
-     *
-     * Method Name: `GetModifierScepter`.
+     * 神杖升级（例：神杖）
      */
     MODIFIER_PROPERTY_IS_SCEPTER = 247,
     /**
-     * Applies shard when this property is active
-     *
-     *
-     *
-     * Method Name: `GetModifierShard`.
+     * Lua不可用：魔晶升级（例：魔晶）
      */
     MODIFIER_PROPERTY_IS_SHARD = 248,
     /**
-     * Method Name: `GetModifierRadarCooldownReduction`
+     * Lua不可用：扫描冷却降低（例：望远镜）
      */
     MODIFIER_PROPERTY_RADAR_COOLDOWN_REDUCTION = 249,
     /**
-     * Method Name: `GetActivityTranslationModifiers`
+     * 动画转变（例：太多了）
      */
     MODIFIER_PROPERTY_TRANSLATE_ACTIVITY_MODIFIERS = 250,
     /**
-     * Method Name: `GetAttackSound`
+     * 攻击声音特效（例：太多了）
      */
     MODIFIER_PROPERTY_TRANSLATE_ATTACK_SOUND = 251,
     /**
-     * Method Name: `GetUnitLifetimeFraction`
+     * 倒计时特效（例：普通召唤单位默认）
      */
     MODIFIER_PROPERTY_LIFETIME_FRACTION = 252,
     /**
-     * Method Name: `GetModifierProvidesFOWVision`
+     * 模型视野（例：风雷之击）
      */
     MODIFIER_PROPERTY_PROVIDES_FOW_POSITION = 253,
     /**
-     * Method Name: `GetModifierSpellsRequireHP`
+     * 施放技能消耗生命值（未知）
      */
     MODIFIER_PROPERTY_SPELLS_REQUIRE_HP = 254,
     /**
-     * Method Name: `GetModifierConvertManaCostToHealthCost`
+     * 通过生命值施放技能（例：血魔法）
      */
     MODIFIER_PROPERTY_CONVERT_MANA_COST_TO_HEALTH_COST = 255,
     /**
-     * Method Name: `GetForceDrawOnMinimap`
+     * 强制小地图显示（未知）
      */
     MODIFIER_PROPERTY_FORCE_DRAW_MINIMAP = 256,
     /**
-     * Method Name: `GetModifierDisableTurning`
+     * 朝向锁定（例：护身甲盾）
      */
     MODIFIER_PROPERTY_DISABLE_TURNING = 257,
     /**
-     * Method Name: `GetModifierIgnoreCastAngle`
+     * 忽略施法角度（例：喷气背包）
      */
     MODIFIER_PROPERTY_IGNORE_CAST_ANGLE = 258,
     /**
-     * Method Name: `GetModifierChangeAbilityValue`
+     * 改变技能数值（未知）
      */
     MODIFIER_PROPERTY_CHANGE_ABILITY_VALUE = 259,
     /**
-     * Method Name: `GetModifierOverrideAbilitySpecial`
+     * 覆盖技能数值（例：太多了）
      */
     MODIFIER_PROPERTY_OVERRIDE_ABILITY_SPECIAL = 260,
     /**
-     * Method Name: `GetModifierOverrideAbilitySpecialValue`
+     * 特殊覆盖技能数值（例：太多了）
      */
     MODIFIER_PROPERTY_OVERRIDE_ABILITY_SPECIAL_VALUE = 261,
     /**
-     * Method Name: `GetModifierAbilityLayout`
+     * 技能排布隐藏（例：感染）
      */
     MODIFIER_PROPERTY_ABILITY_LAYOUT = 262,
     /**
-     * Method Name: `OnDominated`
+     * 被支配时（例：感染）
      */
     MODIFIER_EVENT_ON_DOMINATED = 263,
     /**
-     * Method Name: `OnKill`
+     * Lua不可用：击杀时（未知）
      */
     MODIFIER_EVENT_ON_KILL = 264,
     /**
-     * Method Name: `OnAssist`
+     * Lua不可用：助攻时（未知）
      */
     MODIFIER_EVENT_ON_ASSIST = 265,
     /**
-     * Method Name: `GetModifierTempestDouble`
+     * 风暴双雄克隆体标签（例：风暴双雄）
      */
     MODIFIER_PROPERTY_TEMPEST_DOUBLE = 266,
     /**
-     * Method Name: `PreserveParticlesOnModelChanged`
+     * 模型替换时粒子特效（例：暗夜猎影）
      */
     MODIFIER_PROPERTY_PRESERVE_PARTICLES_ON_MODEL_CHANGE = 267,
     /**
-     * Method Name: `OnAttackFinished`
+     * 攻击完成时（例：强化图腾）
      */
     MODIFIER_EVENT_ON_ATTACK_FINISHED = 268,
     /**
-     * Method Name: `GetModifierIgnoreCooldown`
+     * Lua不可用：忽略冷却（未知）
      */
     MODIFIER_PROPERTY_IGNORE_COOLDOWN = 269,
     /**
-     * Method Name: `GetModifierCanAttackTrees`
+     * 可攻击树木（未知）
      */
     MODIFIER_PROPERTY_CAN_ATTACK_TREES = 270,
     /**
-     * Method Name: `GetVisualZDelta`
+     * 设置飞行高度（例：丛林之舞）
      */
     MODIFIER_PROPERTY_VISUAL_Z_DELTA = 271,
     /**
-     * Method Name: `GetVisualZSpeedBaseOverride`
+     * 起飞速度覆盖（未知）
      */
     MODIFIER_PROPERTY_VISUAL_Z_SPEED_BASE_OVERRIDE = 272,
+    /**
+     * Lua不可用：幻象承受伤害调整（例：幻象默认）
+     */
     MODIFIER_PROPERTY_INCOMING_DAMAGE_ILLUSION = 273,
     /**
-     * Method Name: `GetModifierNoVisionOfAttacker`
+     * 不使攻击目标暴露（未知）
      */
     MODIFIER_PROPERTY_DONT_GIVE_VISION_OF_ATTACKER = 274,
     /**
-     * Method Name: `OnTooltip2`
+     * 状态栏即时更新说明（例：太多了）
      */
     MODIFIER_PROPERTY_TOOLTIP2 = 275,
     /**
-     * Method Name: `OnAttackRecordDestroy`
+     * 攻击记录摧毁时（例：奥术天球）
      */
     MODIFIER_EVENT_ON_ATTACK_RECORD_DESTROY = 276,
     /**
-     * Method Name: `OnProjectileObstructionHit`
+     * 弹道被摧毁时（例：热血竞技场）
      */
     MODIFIER_EVENT_ON_PROJECTILE_OBSTRUCTION_HIT = 277,
     /**
-     * Method Name: `GetSuppressTeleport`
+     * 跳过传送（未知）
      */
     MODIFIER_PROPERTY_SUPPRESS_TELEPORT = 278,
     /**
-     * Method Name: `OnAttackCancelled`
+     * 攻击取消时（例：神枪在手）
      */
     MODIFIER_EVENT_ON_ATTACK_CANCELLED = 279,
     /**
-     * Method Name: `GetSuppressCleave`
+     * Lua不可用：不触发攻击分裂（例：神之谴戒）
      */
     MODIFIER_PROPERTY_SUPPRESS_CLEAVE = 280,
     /**
-     * Method Name: `BotAttackScoreBonus`
+     * Lua不可用：机器人额外分数（未知）
      */
     MODIFIER_PROPERTY_BOT_ATTACK_SCORE_BONUS = 281,
     /**
-     * Method Name: `GetModifierAttackSpeedReductionPercentage`
+     * 百分比减攻速调整（未知）
      */
     MODIFIER_PROPERTY_ATTACKSPEED_REDUCTION_PERCENTAGE = 282,
     /**
-     * Method Name: `GetModifierMoveSpeedReductionPercentage`
+     * 百分比减移速调整（未知）
      */
     MODIFIER_PROPERTY_MOVESPEED_REDUCTION_PERCENTAGE = 283,
+    /**
+     * Lua不可用：可在移动时攻击（例：集中火力）
+     */
     MODIFIER_PROPERTY_ATTACK_WHILE_MOVING_TARGET = 284,
     /**
-     * Method Name: `GetModifierAttackSpeedPercentage`
+     * 百分比攻击速度（例：长大）
      */
     MODIFIER_PROPERTY_ATTACKSPEED_PERCENTAGE = 285,
     /**
-     * Method Name: `OnAttemptProjectileDodge`
+     * Lua不可用：尝试躲避弹道时（未知）
      */
     MODIFIER_EVENT_ON_ATTEMPT_PROJECTILE_DODGE = 286,
     /**
-     * Method Name: `GetModifierPercentageCooldownStacking`
+     * 特殊百分比冷却缩减（未知）
      */
     MODIFIER_PROPERTY_COOLDOWN_PERCENTAGE_STACKING = 287,
     /**
-     * Method Name: `GetModifierSpellRedirectTarget`
+     * Lua不可用：技能共享目标（例：位面空洞）
      */
     MODIFIER_PROPERTY_SPELL_REDIRECT_TARGET = 288,
     /**
-     * Method Name: `GetModifierTurnRateConstant`
+     * Lua不可用：定值转身速率（例：织网）
      */
     MODIFIER_PROPERTY_TURN_RATE_CONSTANT = 289,
     /**
-     * Method Name: `GetModifierIsPackRat`
+     * Lua不可用：中立物品栏可使用普通物品（例：囤积狂鼠）
      */
     MODIFIER_PROPERTY_PACK_RAT = 290,
     /**
-     * Method Name: `GetModifierPhysicalDamageOutgoing_Percentage`
+     * Lua不可用：施加方百分比物理伤害（例：怨灵之契）
      */
     MODIFIER_PROPERTY_PHYSICALDAMAGEOUTGOING_PERCENTAGE = 291,
     /**
-     * Method Name: `GetModifierKnockbackAmplification_Percentage`
+     * Lua不可用：击退抗性（例：坚固核心）
      */
     MODIFIER_PROPERTY_KNOCKBACK_AMPLIFICATION_PERCENTAGE = 292,
     /**
-     * Return value is a count of pips.
-     *
-     *
-     *
-     * Method Name: `GetModifierHealthBarPips`.
+     * 特殊生命条（例：攻击次数型单位）
      */
     MODIFIER_PROPERTY_HEALTHBAR_PIPS = 293,
     /**
-     * This property controls 'universal' shield, if defined both on client and
-     * server. Return value on client should be current shield health, as a positive
-     * integer, on server - amount of damage blocked.
-     *
-     *
-     *
-     * Method Name: `GetModifierIncomingDamageConstant`.
+     * 全类型伤害护盾（例：无光之盾）
      */
     MODIFIER_PROPERTY_INCOMING_DAMAGE_CONSTANT = 294,
     /**
-     * Method Name: `OnSpellAppliedSuccessfully`
+     * 施法成功时（例：绝刃）
      */
     MODIFIER_EVENT_SPELL_APPLIED_SUCCESSFULLY = 295,
     /**
-     * Method Name: `GetModifierAvoidDamageAfterReductions`
+     * 尾端伤害无效化（例：虚妄之诺）
      */
     MODIFIER_PROPERTY_AVOID_DAMAGE_AFTER_REDUCTIONS = 296,
     /**
-     * Method Name: `GetModifierPropetyFailAttack`
+     * Lua不可用：致使攻击失败（例：林渊旅人）
      */
     MODIFIER_PROPERTY_FAIL_ATTACK = 297,
     /**
-     * Method Name: `GetModifierPrereduceIncomingDamage_Mult`
+     * Lua不可用：前结算伤害调整（未知）
      */
     MODIFIER_PROPERTY_PREREDUCE_INCOMING_DAMAGE_MULT = 298,
     /**
-     * Method Name: `GetModifierSuppressFullscreenDeathFX`
+     * 跳过死亡特效（未知）
      */
     MODIFIER_PROPERTY_SUPPRESS_FULLSCREEN_DEATH_FX = 299,
     /**
-     * Method Name: `MODIFIER_PROPERTY_INCOMING_DAMAGE_CONSTANT_POST`
+     * Lua不可用：后结算伤害护盾（未知）
      */
     MODIFIER_PROPERTY_INCOMING_DAMAGE_CONSTANT_POST = 300,
     /**
-     * Method Name: `GetModifierDamageOutgoing_PercentageMultiplicative`
+     * Lua不可用：特殊百分比总攻击调整（例：窒碍短匕）
      */
     MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE_MULTIPLICATIVE = 301,
     /**
-     * Method Name: `GetModifierTickGold_Multiplier`
+     * Lua不可用：被动金钱倍率（例：贤者石）
      */
     MODIFIER_PROPERTY_TICK_GOLD_MULTIPLIER = 302,
     /**
-     * Method Name: `GEtModifierSlowResistance_Unique`
+     * Lua不可用：特殊减速抗性（例：散华）
      */
     MODIFIER_PROPERTY_SLOW_RESISTANCE_UNIQUE = 303,
     /**
-     * Method Name: `GetModifierSlowResistance_Stacking`
+     * Lua不可用：减速抗性（例：神之力量）
      */
     MODIFIER_PROPERTY_SLOW_RESISTANCE_STACKING = 304,
     /**
-     * Method Name: `GetModifierSlowResistanceAppliesToAttacks`
+     * Lua不可用：减速抗性影响攻速（例：不可逾越）
      */
     MODIFIER_PROPERTY_SLOW_RESISTANCE_APPLIES_TO_ATTACKS = 305,
     /**
-     * Method Name: `GetModifierAoEBonusPercentage`
+     * Lua不可用：百分比作用范围加成（例：凶）
      */
     MODIFIER_PROPERTY_AOE_BONUS_PERCENTAGE = 306,
     /**
-     * Method Name: `GetModifierProjectileSpeed`
+     * Lua不可用：区域百分比弹道速度（例：逆转时空）
      */
     MODIFIER_PROPERTY_PROJECTILE_SPEED = 307,
     /**
-     * Method Name: `GetModifierProjectileSpeedTarget`
+     * Lua不可用：区域百分比目标弹道速度（未知）
      */
     MODIFIER_PROPERTY_PROJECTILE_SPEED_TARGET = 308,
     /**
-     * Method Name: `GetModifierBecomeStrength`
+     * Lua不可用：变为力量（例：潮落）
      */
     MODIFIER_PROPERTY_BECOME_STRENGTH = 309,
     /**
-     * Method Name: `GetModifierBecomeAgility`
+     * Lua不可用：变为敏捷（例：潮涨）
      */
     MODIFIER_PROPERTY_BECOME_AGILITY = 310,
     /**
-     * Method Name: `GetModifierBecomeIntelligence`
+     * Lua不可用：变为智力（未知）
      */
     MODIFIER_PROPERTY_BECOME_INTELLIGENCE = 311,
     /**
-     * Method Name: `GetModifierBecomeUniversal`
+     * Lua不可用：变为全才（例：老版冥界亚龙天赋）
      */
     MODIFIER_PROPERTY_BECOME_UNIVERSAL = 312,
     /**
-     * Method Name: `OnForceProcMagicStick`
+     * Lua不可用：强制触发魔棒时（例：马蹄践踏）
      */
     MODIFIER_EVENT_ON_FORCE_PROC_MAGIC_STICK = 313,
     /**
-     * Method Name: `OnDamageHPLoss`
+     * 生命移除时（未知）
      */
     MODIFIER_EVENT_ON_DAMAGE_HPLOSS = 314,
     /**
-     * Method Name: `GetModifierShareXPRune`
+     * 智慧神龛共享（例：古龙学者）
      */
     MODIFIER_PROPERTY_SHARE_XPRUNE = 315,
     /**
-     * Method Name: `GetModifierXPFountainCountdownTimeOverride`
+     * 智慧神龛冷却时间覆盖（未知）
      */
     MODIFIER_PROPERTY_XP_FOUNTAIN_COUNTDOWN_TIME_OVERRIDE = 316,
     /**
-     * Method Name: `GetModifierNoFreeTPScrollOnDeath`
+     * 死亡无回城卷轴（未知）
      */
     MODIFIER_PROPERTY_NO_FREE_TP_SCROLL_ON_DEATH = 317,
     /**
-     * Method Name: `GetModifierHasBonusNeutralItemChoice`
+     * Lua不可用：额外中立物品选项（例：三只手）
      */
     MODIFIER_PROPERTY_HAS_BONUS_NEUTRAL_ITEM_CHOICE = 318,
     /**
@@ -2424,87 +2403,87 @@ declare enum modifierfunction {
      */
     MODIFIER_PROPERTY_HAS_BONUS_NEUTRAL_ITEM_PASSIVE = 319,
     /**
-     * Method Name: `GetModifierPreserveNeutralItemPassives`
+     * Lua不可用：中立附魔累加（例：斯布恩的藏品）
      */
     MODIFIER_PROPERTY_PRESERVE_NEUTRAL_ITEM_PASSIVES = 320,
     /**
-     * Method Name: `GetModifierForceMaxHealth`
+     * Lua不可用：最大生命值设定（例：坚毅之件）
      */
     MODIFIER_PROPERTY_FORCE_MAX_HEALTH = 321,
     /**
-     * Method Name: `GetModifierForceMaxMana`
+     * Lua不可用：最大魔法值设定（例：血魔法）
      */
     MODIFIER_PROPERTY_FORCE_MAX_MANA = 322,
     /**
-     * Method Name: `GetModifierAoEBonusConstant`
+     * Lua不可用：特殊定值作用范围加成（例：缚灵索）
      */
     MODIFIER_PROPERTY_AOE_BONUS_CONSTANT = 323,
     /**
-     * Method Name: `GetModifierAoEBonusConstantStacking`
+     * Lua不可用：定值作用范围加成（例：亵渎之力）
      */
     MODIFIER_PROPERTY_AOE_BONUS_CONSTANT_STACKING = 324,
     /**
-     * Method Name: `OnTakeDamagePostUnavoidableBlock`
+     * Lua不可用：在首端伤害格挡前时（例：永世法衣）
      */
     MODIFIER_EVENT_ON_TAKEDAMAGE_POST_UNAVOIDABLE_BLOCK = 325,
     /**
-     * Method Name: `OnMuteDamageAbilities`
+     * Lua不可用：锁闭伤害技能时（例：闪烁匕首）
      */
     MODIFIER_EVENT_ON_MUTE_DAMAGE_ABILITIES = 326,
     /**
-     * Method Name: `GetSuppressCrit`
+     * Lua不可用：不触发致命一击（例：老版英灵胸针）
      */
     MODIFIER_PROPERTY_SUPPRESS_CRIT = 327,
     /**
-     * Method Name: `GetModifierAbilityPoints`
+     * Lua不可用：提供技能点数（例：曲线学习）
      */
     MODIFIER_PROPERTY_ABILITY_POINTS = 328,
     /**
-     * Method Name: `GetModifierBuybackPenaltyPercent`
+     * Lua不可用：百分比买活惩罚（例：恶魔的交易）
      */
     MODIFIER_PROPERTY_BUYBACK_PENALTY_PERCENT = 329,
     /**
-     * Method Name: `GetModifierItemSellbackCost`
+     * Lua不可用：百分比出售价格增加（例：恶魔的交易）
      */
     MODIFIER_PROPERTY_ITEM_SELLBACK_COST = 330,
     /**
-     * Method Name: `GetModifierDisassembleAnything`
+     * 可拆分任意物品（例：拆东补西）
      */
     MODIFIER_PROPERTY_DISASSEMBLE_ANYTHING = 331,
     /**
-     * Method Name: `GetModifierFixedManaRegen`
+     * 固定魔法恢复（例：死亡充能）
      */
     MODIFIER_PROPERTY_FIXED_MANA_REGEN = 332,
     /**
-     * Method Name: `GetModifierBonusUphillMissChance`
+     * Lua不可用：上下坡落空概率加成（例：制高点）
      */
     MODIFIER_PROPERTY_BONUS_UPHILL_MISS_CHANCE = 333,
     /**
-     * Method Name: `GetModifierCreepDenyPercent`
+     * Lua不可用：反补生命百分比调整（例：盛宴）
      */
     MODIFIER_PROPERTY_CREEP_DENY_PERCENT = 334,
     /**
-     * Method Name: `GetModifierAttackSpeedAbsoluteMax`
+     * 绝对攻速上限设定（未知）
      */
     MODIFIER_PROPERTY_ATTACKSPEED_ABSOLUTE_MAX = 335,
     /**
-     * Method Name: `GetModifierFoWTeam`
+     * Lua不可用：更改视野阵营（例：热血运动）
      */
     MODIFIER_PROPERTY_FOW_TEAM = 336,
     /**
-     * Method Name: `OnHeroBeginDying`
+     * 开始死亡时（例：驱邪护符）
      */
     MODIFIER_EVENT_ON_HERO_BEGIN_DYING = 337,
     /**
-     * Method Name: `GetModifierBonusLotusHeal`
+     * Lua不可用：疗伤莲花效果增强（例：赛洛蒙妮的信徒）
      */
     MODIFIER_PROPERTY_BONUS_LOTUS_HEAL = 338,
     /**
-     * Method Name: `GetModifierBaseHpRegenPerStrBonusPercentage`
+     * Lua不可用：百分比力量生命恢复增强（例：内在优势）
      */
     MODIFIER_PROPERTY_BASE_HP_REGEN_PER_STR_BONUS_PERCENTAGE = 339,
     /**
-     * Method Name: `GetModifierBaseArmorPerAgiBonusPercentage`
+     * Lua不可用：百分比敏捷护甲增强（例：内在优势）
      */
     MODIFIER_PROPERTY_BASE_ARMOR_PER_AGI_BONUS_PERCENTAGE = 340,
     /**
@@ -2512,167 +2491,167 @@ declare enum modifierfunction {
      */
     MODIFIER_PROPERTY_BASE_ATTACKSPEED_PER_AGI_BONUS_PERCENTAGE = 341,
     /**
-     * Method Name: `GetModifierBaseManaRegenPerIntBonusPercentage`
+     * Lua不可用：百分比智力生命恢复增强（例：内在优势）
      */
     MODIFIER_PROPERTY_BASE_MP_REGEN_PER_INT_BONUS_PERCENTAGE = 342,
     /**
-     * Method Name: `GetModifierBaseMagicResistPerIntBonusPercentage`
+     * Lua不可用：百分比智力魔法抗性增强（例：内在优势）
      */
     MODIFIER_PROPERTY_BASE_MRES_PER_INT_BONUS_PERCENTAGE = 343,
     /**
-     * Method Name: `OnDayStarted`
+     * 进入白天时（例：辰星破晓）
      */
     MODIFIER_EVENT_ON_DAY_STARTED = 344,
     /**
-     * Method Name: `OnNightStarted`
+     * Lua不可用：进入夜晚时（例：固有增益）
      */
     MODIFIER_EVENT_ON_NIGHT_STARTED = 345,
     /**
-     * Method Name: `GetModifierCreateBonusIllusionChance`
+     * 额外幻象产生概率（例：混沌称霸）
      */
     MODIFIER_PROPERTY_CREATE_BONUS_ILLUSION_CHANCE = 346,
     /**
-     * Method Name: `GetModifierCreateBonusIllusionCount`
+     * 额外幻象产生数量（例：混沌称霸）
      */
     MODIFIER_PROPERTY_CREATE_BONUS_ILLUSION_COUNT = 347,
     /**
-     * Method Name: `GetModofierPropertyPseudoRandomBonus`
+     * Lua不可用：伪随机概率减低（例：天佑勇者）
      */
     MODIFIER_PROPERTY_PSEUDORANDOM_BONUS = 348,
     /**
-     * Method Name: `GetModifierAttackHeightBonus`
+     * 攻击弹道交互高度增加（例：冰川）
      */
     MODIFIER_PROPERTY_ATTACK_HEIGHT_BONUS = 349,
     /**
-     * Method Name: `GetSkipAttackRegulator`
+     * Lua不可用：跳过攻击结算（例：死亡守卫）
      */
     MODIFIER_PROPERTY_SKIP_ATTACK_REGULATOR = 350,
     /**
-     * Method Name: `GetModifierMiss_Percentage_Target`
+     * Lua不可用：目标致盲（例：老版烟幕）
      */
     MODIFIER_PROPERTY_MISS_PERCENTAGE_TARGET = 351,
     /**
-     * Method Name: `GetModifierAdditionalNutralItemDrops`
+     * 额外掉落中立物品（例：丛林赠品）
      */
     MODIFIER_PROPERTY_ADDITIONAL_NEUTRAL_ITEM_DROPS = 352,
     /**
-     * Method Name: `GetModifierKillStreakBonusGoldPercentage`
+     * 额外百分比终结连杀金钱（例：职业猎人）
      */
     MODIFIER_PROPERTY_KILL_STREAK_BONUS_GOLD_PERCENTAGE = 353,
     /**
-     * Method Name: `GetModifierHPRegenMultiplierPreAmplification`
+     * Lua不可用：生命恢复系数（例：无畏）
      */
     MODIFIER_PROPERTY_HP_REGEN_MULTIPLIER_PRE_AMPLIFICATION = 354,
     /**
-     * Method Name: `GetModifierHeroFacetOverride`
+     * Lua不可用：命石覆盖（例：变形）
      */
     MODIFIER_PROPERTY_HEROFACET_OVERRIDE = 355,
     /**
-     * Method Name: `OnTreeCutDown`
+     * 摧毁树木时（例：暴露疗法）
      */
     MODIFIER_EVENT_ON_TREE_CUT_DOWN = 356,
     /**
-     * Method Name: `OnCleaveAttackLanded`
+     * Lua不可用：攻击分裂命中时（例：死亡之拳）
      */
     MODIFIER_EVENT_ON_CLEAVE_ATTACK_LANDED = 357,
     /**
-     * Method Name: `MinAttributeLevel`
+     * Lua不可用：最低属性等级（例：虚空行者）
      */
     MODIFIER_PROPERTY_MIN_ATTRIBUTE_LEVEL = 358,
     /**
-     * Method Name: `GetTierTokenReroll`
+     * Lua不可用：中立物品复制（例：英熊好礼）
      */
     MODIFIER_PROPERTY_TIER_TOKEN_REROLL = 359,
     /**
-     * Method Name: `GetVisionDegreeRestriction`
+     * Lua不可用：视野角度限制（例：红光满面）
      */
     MODIFIER_PROPERTY_VISION_DEGREES_RESTRICTION = 360,
     /**
-     * Method Name: `GetModifierTotal_ConstantBlockStacking`
+     * Lua不可用：叠加末端伤害格挡（例：幽灵船）
      */
     MODIFIER_PROPERTY_TOTAL_CONSTANT_BLOCK_STACKING = 361,
     /**
-     * Method Name: `GetModifierInventorySlotRestricted`
+     * Lua不可用：物品栏限制（例：熊亦求精）
      */
     MODIFIER_PROPERTY_INVENTORY_SLOT_RESTRICTED = 362,
     /**
-     * Method Name: `OnTierTokenRerolled`
+     * Lua不可用：同步中立物品时（例：英熊好礼）
      */
     MODIFIER_EVENT_ON_TIER_TOKEN_REROLLED = 363,
     /**
-     * Method Name: `GetRedirectSpell`
+     * 技能共享（例：缚魂）
      */
     MODIFIER_PROPERTY_REDIRECT_SPELL = 364,
     /**
-     * Method Name: `GetBaseAttackPostBonus`
+     * Lua不可用：活跃基础攻击力（例：灵幻兵械）
      */
     MODIFIER_PROPERTY_BASEATTACK_POSTBONUS = 365,
     /**
-     * Method Name: `OnFoWTeamChanged`
+     * Lua不可用：视野所属阵营改变时（例：真实视域）
      */
     MODIFIER_EVENT_ON_FOW_TEAM_CHANGED = 366,
     /**
-     * Method Name: `GetSuppressAttackProcs`
+     * Lua不可用：跳过攻击触发（未知）
      */
     MODIFIER_PROPERTY_SUPPRESS_ATTACK_PROCS = 367,
     /**
-     * Method Name: `OnAbilityToggled`
+     * Lua不可用：切换开关技能时（例：熊亦求精）
      */
     MODIFIER_EVENT_ON_ABILITY_TOGGLED = 368,
     /**
-     * Method Name: `GetModifierAvoidAttackProcs`
+     * Lua不可用：不触发攻击特效（例：翔影之钗）
      */
     MODIFIER_PROPERTY_AVOID_ATTACK_PROCS = 369,
     /**
-     * Method Name: `OnRuneSpawn`
+     * Lua不可用：神符产生时（未知）
      */
     MODIFIER_EVENT_ON_RUNE_SPAWN = 370,
     /**
-     * Method Name: `GetModifierProperty_PhysicalLifesteal`
+     * Lua不可用：攻击吸血（例：撒旦之邪力）
      */
     MODIFIER_PROPERTY_PHYSICAL_LIFESTEAL = 371,
     /**
-     * Method Name: `GetModifierProperty_MagicalLifesteal`
+     * Lua不可用：技能吸血（例：血精石）
      */
     MODIFIER_PROPERTY_MAGICAL_LIFESTEAL = 372,
     /**
-     * Method Name: `OnPureDamageCalculated`
+     * Lua不可用：造成纯粹伤害时（例：束手束脚）
      */
     MODIFIER_EVENT_ON_PURE_DAMAGE_CALCULATED = 373,
     /**
-     * Method Name: `GetModifierNeutralTrinketOptions`
+     * Lua不可用：提前打造中立物品（例：基本法则锻造）
      */
     MODIFIER_EVENT_NEUTRAL_TRINKET_OPTIONS = 374,
     /**
-     * Method Name: `GetModifierNeutralEnhancementOptions`
+     * Lua不可用：选择中立附魔时（未知）
      */
     MODIFIER_EVENT_NEUTRAL_ENHANCEMENT_OPTIONS = 375,
     /**
-     * Method Name: `GetModifierMoveSpeedMax_BonusConstant`
+     * 定值标准移速上限（例：奔流湍急）
      */
     MODIFIER_PROPERTY_MOVESPEED_MAX_BONUS_CONSTANT = 376,
     /**
-     * Method Name: `GetModifierMoveSpeedPostMultiplierBonus_Constant`
+     * 后移速调整定值移速（例：奔流湍急）
      */
     MODIFIER_PROPERTY_MOVESPEED_POST_MULTIPLIER_BONUS_CONSTANT = 377,
     /**
-     * Method Name: `GetModifierPropertyForbidIllusions`
+     * Lua不可用：禁止产生幻象（未知）
      */
     MODIFIER_PROPERTY_FORBID_ILLUSIONS = 378,
     /**
-     * Method Name: `GetModifierPropertyManacostOverride`
+     * Lua不可用：魔法消耗覆盖（未知）
      */
     MODIFIER_PROPERTY_MANACOST_OVERRIDE = 379,
     /**
-     * Method Name: `GetModifierPropertyRestorationAmplification`
+     * Lua不可用：生命回复调整（例：斯嘉蒂之眼）
      */
     MODIFIER_PROPERTY_RESTORATION_AMPLIFICATION = 380,
     /**
-     * Method Name: `GetModifierPropertyRestorationAmplificationUnique`
+     * Lua不可用：特殊生命回复调整（例：散华）
      */
     MODIFIER_PROPERTY_RESTORATION_AMPLIFICATION_UNIQUE = 381,
     /**
-     * Method Name: `GetModifierPropertyHealingAmplificationUnique`
+     * Lua不可用：特殊施加方治疗调整（未知）
      */
     MODIFIER_PROPERTY_HEAL_AMPLIFY_PERCENTAGE_SOURCE_UNIQUE = 382,
     /**
@@ -2680,39 +2659,39 @@ declare enum modifierfunction {
      */
     MODIFIER_PROPERTY_REDIRECT_HEALTH_GAIN = 383,
     /**
-     * Method Name: `GetSuppressIncomingCrit`
+     * Lua不可用：跳过承受方致命一击（未知）
      */
     MODIFIER_PROPERTY_SUPPRESS_INCOMING_CRIT = 384,
     /**
-     * Method Name: `GetModifierPropertyUpgradeNeutralArtifacts`
+     * Lua不可用：中立物品升级（例：休眠珍品）
      */
     MODIFIER_PROPERTY_UPGRADE_NEUTRAL_ARTIFACTS = 385,
     /**
-     * Method Name: `GetModifierPropertySuppressInvalidMoveAttackOrders`
+     * Lua不可用：忽略无效攻击移动指令（未知）
      */
     MODIFIER_PROPERTY_SUPPRESS_INVALID_MOVE_ATTACK_ORDERS = 386,
     /**
-     * Method Name: `GetModifierPropertyConsumableUseSpeed`
+     * Lua不可用：消耗品加速（例：源泉）
      */
     MODIFIER_PROPERTY_CONSUMABLE_USE_SPEED = 387,
     /**
-     * Method Name: `GetRequiredLevel`
+     * Lua不可用：首次学习等级调整（例：曲线学习）
      */
     MODIFIER_PROPERTY_REQUIRED_LEVEL = 388,
     /**
-     * Method Name: `OnModifierRefreshed`
+     * Lua不可用：刷新modifier时（例：安可）
      */
     MODIFIER_EVENT_ON_MODIFIER_REFRESHED = 389,
     /**
-     * Method Name: `OnAbilitySwapped`
+     * Lua不可用：交换技能时（例：两栖狂想曲）
      */
     MODIFIER_EVENT_ON_ABILITY_SWAPPED = 390,
     /**
-     * Method Name: `GetModifierOverrideCreepBounty`
+     * Lua不可用：小兵击杀金钱覆盖（例：加重骰子）
      */
     MODIFIER_PROPERTY_OVERRIDE_CREEP_BOUNTY = 391,
     /**
-     * Method Name: `GetModifierOverrideBaseDamage`
+     * Lua不可用：基础攻击力覆盖（例：加重骰子）
      */
     MODIFIER_PROPERTY_OVERRIDE_BASE_DAMAGE = 392,
     /**
@@ -2749,70 +2728,261 @@ declare enum modifierfunction {
 type ModifierState = modifierstate;
 
 declare enum modifierstate {
-    MODIFIER_STATE_ROOTED = 0,
+    /**
+     * 缠绕（例：疯狂生长）
+     */ MODIFIER_STATE_ROOTED = 0,
+    /**
+     * 缴械（例：超震声波）
+     */
     MODIFIER_STATE_DISARMED = 1,
+    /**
+     * 攻击免疫（例：幽魂权杖）
+     */
     MODIFIER_STATE_ATTACK_IMMUNE = 2,
+    /**
+     * 沉默（例：全领域静默）
+     */
     MODIFIER_STATE_SILENCED = 3,
+    /**
+     * 锁闭（例：神杖静态风暴）
+     */
     MODIFIER_STATE_MUTED = 4,
+    /**
+     * 眩晕（例：魔法箭）
+     */
     MODIFIER_STATE_STUNNED = 5,
+    /**
+     * 妖术（例：邪恶镰刀）
+     */
     MODIFIER_STATE_HEXED = 6,
+    /**
+     * 隐身（例：暗影步）
+     */
     MODIFIER_STATE_INVISIBLE = 7,
+    /**
+     * 无敌（例：海妖之歌）
+     */
     MODIFIER_STATE_INVULNERABLE = 8,
+    /**
+     * 技能免疫（例：技能免疫）
+     */
     MODIFIER_STATE_MAGIC_IMMUNE = 9,
+    /**
+     * 共享视野（例：静电连接）
+     */
     MODIFIER_STATE_PROVIDES_VISION = 10,
+    /**
+     * 睡眠（例：噩梦）
+     */
     MODIFIER_STATE_NIGHTMARED = 11,
+    /**
+     * 禁用物理伤害格挡（未知）
+     */
     MODIFIER_STATE_BLOCK_DISABLED = 12,
+    /**
+     * 禁用闪避（未知）
+     */
     MODIFIER_STATE_EVADE_DISABLED = 13,
+    /**
+     * 无法选中（例：无影拳）
+     */
     MODIFIER_STATE_UNSELECTABLE = 14,
+    /**
+     * 无法指定敌方目标（未知）
+     */
     MODIFIER_STATE_CANNOT_TARGET_ENEMIES = 15,
+    /**
+     * 无法指定建筑目标（例：越界）
+     */
     MODIFIER_STATE_CANNOT_TARGET_BUILDINGS = 16,
+    /**
+     * 克敌机先（例：复仇）
+     */
     MODIFIER_STATE_CANNOT_MISS = 17,
+    /**
+     * 可被反补（例：瘴气）
+     */
     MODIFIER_STATE_SPECIALLY_DENIABLE = 18,
+    /**
+     * 动作冻结（例：急速冷却）
+     */
     MODIFIER_STATE_FROZEN = 19,
+    /**
+     * 无法行动（例：巫毒变身术）
+     */
     MODIFIER_STATE_COMMAND_RESTRICTED = 20,
+    /**
+     * 隐藏小地图图标（例：虫群）
+     */
     MODIFIER_STATE_NOT_ON_MINIMAP = 21,
+    /**
+     * 低攻击优先级（例：七十二变）
+     */
     MODIFIER_STATE_LOW_ATTACK_PRIORITY = 22,
+    /**
+     * 隐藏单位生命条（例：信使护盾）
+     */
     MODIFIER_STATE_NO_HEALTH_BAR = 23,
+    /**
+     * 对敌隐藏单位生命条（例：魅影无形）
+     */
     MODIFIER_STATE_NO_HEALTH_BAR_FOR_ENEMIES = 24,
+    /**
+     * 对其他玩家隐藏生命条（例：虚无投影）
+     */
     MODIFIER_STATE_NO_HEALTH_BAR_FOR_OTHER_PLAYERS = 25,
+    /**
+     * 飞行（例：黑暗飞升）
+     */
     MODIFIER_STATE_FLYING = 26,
+    /**
+     * 相位状态（例：守卫冲刺）
+     */
     MODIFIER_STATE_NO_UNIT_COLLISION = 27,
+    /**
+     * 无法作为跟随目标（例：幻影之拥）
+     */
     MODIFIER_STATE_NO_TEAM_MOVE_TO = 28,
+    /**
+     * 选择组忽略置入（例：幻影之拥）
+     */
     MODIFIER_STATE_NO_TEAM_SELECT = 29,
+    /**
+     * 破坏（例：蝮蛇突袭）
+     */
     MODIFIER_STATE_PASSIVES_DISABLED = 30,
+    /**
+     * 被支配标记（例：支配头盔）
+     */
     MODIFIER_STATE_DOMINATED = 31,
+    /**
+     * 失去视野（例：诱敌奇术）
+     */
     MODIFIER_STATE_BLIND = 32,
+    /**
+     * 隐藏（例：崩裂禁锢）
+     */
     MODIFIER_STATE_OUT_OF_GAME = 33,
+    /**
+     * 虚拟友方（例：感染）
+     */
     MODIFIER_STATE_FAKE_ALLY = 34,
+    /**
+     * 无视地形状态（例：幽鬼之刃）
+     */
     MODIFIER_STATE_FLYING_FOR_PATHING_PURPOSES_ONLY = 35,
+    /**
+     * 真实视域免疫（例：暗影之舞）
+     */
     MODIFIER_STATE_TRUESIGHT_IMMUNE = 36,
+    /**
+     * 不取对象（例：便车）
+     */
     MODIFIER_STATE_UNTARGETABLE = 37,
+    /**
+     * 友方不取对象（例：魔晶烟幕）
+     */
     MODIFIER_STATE_UNTARGETABLE_ALLIED = 38,
+    /**
+     * 敌方不取对象（例：暗影之境）
+     */
     MODIFIER_STATE_UNTARGETABLE_ENEMY = 39,
+    /**
+     * 自身不取对象（未知）
+     */
     MODIFIER_STATE_UNTARGETABLE_SELF = 40,
+    /**
+     * 无法执行移动攻击（例：掘地）
+     */
     MODIFIER_STATE_IGNORING_MOVE_AND_ATTACK_ORDERS = 41,
+    /**
+     * 树木穿行（例：自然蔽护）
+     */
     MODIFIER_STATE_ALLOW_PATHING_THROUGH_TREES = 42,
+    /**
+     * 对敌隐藏小地图图标（例：魅影无形）
+     */
     MODIFIER_STATE_NOT_ON_MINIMAP_FOR_ENEMIES = 43,
+    /**
+     * 无视减速（例：弹无虚发）
+     */
     MODIFIER_STATE_UNSLOWABLE = 44,
+    /**
+     * 束缚（例：突袭）
+     */
     MODIFIER_STATE_TETHERED = 45,
+    /**
+     * 无法执行停止命令（例：星破天惊）
+     */
     MODIFIER_STATE_IGNORING_STOP_ORDERS = 46,
+    /**
+     * 恐惧（例：恐吓）
+     */
     MODIFIER_STATE_FEARED = 47,
+    /**
+     * 嘲讽（例：狂战士的怒吼）
+     */
     MODIFIER_STATE_TAUNTED = 48,
+    /**
+     * 强制位移免疫（例：捶）
+     */
     MODIFIER_STATE_CANNOT_BE_MOTION_CONTROLLED = 49,
+    /**
+     * 飞行视野（例：喷气背包）
+     */
     MODIFIER_STATE_FORCED_FLYING_VISION = 50,
+    /**
+     * 可攻击友方（未知）
+     */
     MODIFIER_STATE_ATTACK_ALLIES = 51,
+    /**
+     * 仅无视地形（未知）
+     */
     MODIFIER_STATE_ALLOW_PATHING_THROUGH_CLIFFS = 52,
     MODIFIER_STATE_ALLOW_PATHING_THROUGH_POWER_COGS = 53,
+    /**
+     * 无法被反补（未知）
+     */
     MODIFIER_STATE_SPECIALLY_UNDENIABLE = 54,
+    /**
+     * 无视特殊地形（未知）
+     */
     MODIFIER_STATE_ALLOW_PATHING_THROUGH_OBSTRUCTIONS = 55,
+    /**
+     * 减益免疫（例：剑刃风暴）
+     */
     MODIFIER_STATE_DEBUFF_IMMUNE = 56,
+    /**
+     * 穿越守护者之门（例：守护者之门）
+     */
     MODIFIER_STATE_ALLOW_PATHING_THROUGH_BASE_BLOCKER = 57,
+    /**
+     * 无法执行移动命令（未知）
+     */
     MODIFIER_STATE_IGNORING_MOVE_ORDERS = 58,
+    /**
+     * 远程近战结算（例：灵魂打击）
+     */
     MODIFIER_STATE_ATTACKS_ARE_MELEE = 59,
+    /**
+     * 完全启动背包（例：老版斯布恩的藏品）
+     */
     MODIFIER_STATE_CAN_USE_BACKPACK_ITEMS = 60,
+    /**
+     * 持续施法期间施法（例：湮灭专家）
+     */
     MODIFIER_STATE_CASTS_IGNORE_CHANNELING = 61,
+    /**
+     * 攻击不曝露（例：吉利服）
+     */
     MODIFIER_STATE_ATTACKS_DONT_REVEAL = 62,
+    /**
+     * 无野怪仇恨（例：丛林之舞）
+     */
     MODIFIER_STATE_NEUTRALS_DONT_ATTACK = 63,
+    /**
+     * 终止占位（默认）
+     */
     MODIFIER_STATE_LAST = 64,
 }
 
@@ -2822,12 +2992,32 @@ declare enum modifierstate {
 type ModifierAttribute = DOTAModifierAttribute_t;
 
 declare enum DOTAModifierAttribute_t {
-    MODIFIER_ATTRIBUTE_NONE = 0,
+    /**
+     * 无特殊属性（默认）
+     */ MODIFIER_ATTRIBUTE_NONE = 0,
+    /**
+     * 永久状态（例：冰）
+     */
     MODIFIER_ATTRIBUTE_PERMANENT = 1,
+    /**
+     * 独立结算（例：沸血之矛）
+     */
     MODIFIER_ATTRIBUTE_MULTIPLE = 2,
+    /**
+     * 可对无敌单位生效（例：衰退光环）
+     */
     MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE = 4,
+    /**
+     * 光环优先级（未知）
+     */
     MODIFIER_ATTRIBUTE_AURA_PRIORITY = 8,
+    /**
+     * 忽略躲避（未知）
+     */
     MODIFIER_ATTRIBUTE_IGNORE_DODGE = 16,
+    /**
+     * 可被复制（未知）
+     */
     MODIFIER_ATTRIBUTE_DUPLICATED = 32,
 }
 
