@@ -5613,10 +5613,17 @@ declare interface CDOTA_Modifier_Lua extends CDOTA_Buff {
      */
     GetPrimaryStatDamageMultiplier?(): number;
     /**
-     * @abstract
-     * @both
+     * Spell redirection intercept (MODIFIER_PROPERTY_REDIRECT_SPELL). Called when a
+     * unit-targeted spell hits the parent. event.ability is populated;
+     * unit/target/attacker are often nil. Return 1 to block the original hit (like
+     * absorb); return 0 to ignore. Returning a unit handle or entindex does NOT
+     * change the spell target — Lua cannot set the native redirect destination
+     * (Planar Pocket / Soulbind do that in C++). Custom games that need retargeting
+     * should return 1 then re-cast via ForceCast / SetCursorCastTarget +
+     * OnSpellStart. Prefer declaring event as optional (event?) at call sites if
+     * needed for assignability against older void stubs.
      */
-    GetRedirectSpell?(): void;
+    GetRedirectSpell?(event: ModifierAbilityEvent): 0 | 1;
     /**
      * @abstract
      * @both

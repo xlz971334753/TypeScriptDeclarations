@@ -5613,10 +5613,12 @@ declare interface CDOTA_Modifier_Lua extends CDOTA_Buff {
      */
     GetPrimaryStatDamageMultiplier?(): number;
     /**
+     * 技能转向/拦截（MODIFIER_PROPERTY_REDIRECT_SPELL）。单位指向技能命中父实体时调用；通常只有 event.ability 有值。返回 1 阻挡原命中，返回 0 忽略。Lua 无法靠返回值指定新目标（位面空洞/缚魂的改向在 C++ 侧完成）；自定义图若需改向应 return 1 后再用 ForceCast / SetCursorCastTarget + OnSpellStart 重施放。
+     *
      * @abstract
      * @both
      */
-    GetRedirectSpell?(): void;
+    GetRedirectSpell?(event?: ModifierAbilityEvent): 0 | 1;
     /**
      * @abstract
      * @both

@@ -2,6 +2,9 @@
   "CDOTA_Modifier_Lua.GetModifierPropertyRestorationAmplification": {
     "description": "生命回复调整（百分比）。效果等同于冰眼。"
   },
+  "CDOTA_Modifier_Lua.GetRedirectSpell": {
+    "description": "技能转向/拦截（MODIFIER_PROPERTY_REDIRECT_SPELL）。单位指向技能命中父实体时调用；通常只有 event.ability 有值。返回 1 阻挡原命中，返回 0 忽略。Lua 无法靠返回值指定新目标（位面空洞/缚魂的改向在 C++ 侧完成）；自定义图若需改向应 return 1 后再用 ForceCast / SetCursorCastTarget + OnSpellStart 重施放。"
+  },
   "enum:DOTAModifierAttribute_t#member:MODIFIER_ATTRIBUTE_AURA_PRIORITY": {
     "description": "光环优先级（未知）"
   },
@@ -981,7 +984,7 @@
     "description": "Lua不可用：扫描冷却降低（例：望远镜）"
   },
   "enum:modifierfunction#member:MODIFIER_PROPERTY_REDIRECT_SPELL": {
-    "description": "技能共享（例：缚魂）"
+    "description": "技能转向/拦截（例：缚魂、位面空洞）。GetRedirectSpell(event?)=>0|1，return 1 挡原命中；无法靠返回值指定新目标"
   },
   "enum:modifierfunction#member:MODIFIER_PROPERTY_REFLECT_SPELL": {
     "description": "技能反弹（例：清莲宝珠）"

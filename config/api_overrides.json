@@ -1,5 +1,11 @@
 {
   "CDOTA_Modifier_Lua.GetModifierPropertyRestorationAmplification": {
     "return": "number"
+  },
+  "CDOTA_Modifier_Lua.GetRedirectSpell": {
+    "args": {
+      ">event?": "ModifierAbilityEvent"
+    },
+    "return": "0 | 1"
   }
 }

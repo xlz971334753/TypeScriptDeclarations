@@ -2598,7 +2598,7 @@ declare enum ModifierFunction {
      */
     ON_TIER_TOKEN_REROLLED = 363,
     /**
-     * 技能共享（例：缚魂）
+     * 技能转向/拦截（例：缚魂、位面空洞）。GetRedirectSpell(event?)=>0|1，return 1 挡原命中；无法靠返回值指定新目标
      */
     REDIRECT_SPELL = 364,
     /**
